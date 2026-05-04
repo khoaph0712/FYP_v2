@@ -1,6 +1,6 @@
 """Comprehensive quality check for the trained YOLOv8n waste-sorting model.
 
-What it produces (all written to `runs/trash_yolov8n_v2/quality_check/`):
+What it produces (all written under `runs/dl/<run_name>/quality_check/` by default):
     - val_metrics.json / test_metrics.json   overall + per-class AP, P, R, F1
     - confusion_matrix.png / ..._normalized.png
     - PR_curve.png, F1_curve.png, P_curve.png, R_curve.png
@@ -11,7 +11,7 @@ What it produces (all written to `runs/trash_yolov8n_v2/quality_check/`):
 Usage:
     python scripts/evaluate.py                        # val split, default paths
     python scripts/evaluate.py --split test           # test split
-    python scripts/evaluate.py --weights runs/trash_yolov8n_v2/weights/best.pt
+    python scripts/evaluate.py --weights runs/dl/trash_yolov8n_v3/weights/best.pt
 """
 
 from __future__ import annotations
@@ -26,9 +26,9 @@ from ultralytics import YOLO
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_WEIGHTS = ROOT / "runs" / "trash_yolov8n_v2" / "weights" / "best.pt"
-DEFAULT_DATA = ROOT / "merged_dataset_v2" / "data.yaml"
-DEFAULT_OUT = ROOT / "runs" / "trash_yolov8n_v2" / "quality_check"
+DEFAULT_WEIGHTS = ROOT / "runs" / "dl" / "trash_yolov8n_v3" / "weights" / "best.pt"
+DEFAULT_DATA = ROOT / "merged_dataset_v3" / "data.yaml"
+DEFAULT_OUT = ROOT / "runs" / "dl" / "trash_yolov8n_v3" / "quality_check"
 
 
 def run_val(weights: Path, data: Path, split: str, out_dir: Path, imgsz: int = 640) -> dict:

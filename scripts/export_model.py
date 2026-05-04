@@ -10,7 +10,7 @@ Produces (next to the input weights):
 
 Usage:
     python scripts/export_model.py
-    python scripts/export_model.py --weights runs/trash_yolov8n_v2/weights/best.pt
+    python scripts/export_model.py --weights runs/dl/trash_yolov8n_v3/weights/best.pt
     python scripts/export_model.py --imgsz 320           # smaller = faster on phone
 
 Notes:
@@ -31,8 +31,8 @@ from ultralytics import YOLO
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_WEIGHTS = ROOT / "runs" / "trash_yolov8n_v2" / "weights" / "best.pt"
-DEFAULT_DATA = ROOT / "merged_dataset_v2" / "data.yaml"
+DEFAULT_WEIGHTS = ROOT / "runs" / "dl" / "trash_yolov8n_v3" / "weights" / "best.pt"
+DEFAULT_DATA = ROOT / "merged_dataset_v3" / "data.yaml"
 
 
 def export_onnx(weights: Path, imgsz: int) -> Path:

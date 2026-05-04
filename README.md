@@ -6,23 +6,17 @@ Roboflow dataset, exported to **TFLite / ONNX**, and deployed on a **React Nativ
 
 ```
 C:\FYP_v2
-├── merged_dataset_v2\             # 7-class merged dataset (v2, baseline)
-├── merged_dataset_v3\             # 7-class merged dataset (v3, cleaner organic + re-split glass)
+├── merged_dataset_v2\             # legacy 7-class dataset (optional; v3 is default in scripts)
+├── merged_dataset_v3\             # canonical 7-class dataset (train/valid/test)
+├── ml\
+│   └── frequency_analysis\        # spatial/frequency CSVs + plots (from feature_ml_analysis.py)
 ├── runs\
-│   ├── trash_yolov8n\             # initial run (weights/best.pt)
-│   ├── trash_yolov8n_v2\          # fine-tuned run (20 epochs on v2 data)
-│   │   └── quality_check\         # ← produced by scripts/evaluate.py
-│   └── trash_yolov8n_v3\          # fine-tuned on v3 data
-├── scripts\
-│   ├── download_datasets.py       # original 5 Roboflow datasets → rf_* folders
-│   ├── download_extra.py          # extra Roboflow datasets for organic/other
-│   ├── build_merged_dataset.py    # merge rf_* folders → merged_dataset_v3
-│   ├── check_class_balance.py     # per-class / per-split box counts
-│   ├── evaluate.py                # val + test metrics, confusion matrix, sample preds, REPORT.md
-│   ├── plot_training.py           # loss / mAP curves from results.csv
-│   └── export_model.py            # ONNX + TFLite (fp32 / fp16 / int8) + metadata.json
+│   ├── ml\                        # classical ML + feature reports (LogReg, SVM, RF, …)
+│   ├── dl\                        # YOLO training runs + dl_baseline (tiny CNN)
+│   └── comparisons\             # ML vs DL charts + REPORT (from compare_ml_dl.py)
+├── scripts\                       # CLI tools (dataset, train helpers, eval, export, ML)
 ├── mobile\                        # Expo (Dev Client) React Native app
-└── requirements.txt               # Python deps for training/eval/export
+└── requirements.txt
 ```
 
 ## 0 · Install Python deps
@@ -38,7 +32,7 @@ pip install -r requirements.txt
 
 ## 1 · Quality check (are we mobile-ready?)
 
-The model at `runs/trash_yolov8n_v2/weights/best.pt` reached:
+The v2 run (historical) at `runs/dl/trash_yolov8n_v2/weights/best.pt` reached:
 
 
 | Metric                         | Value |
@@ -56,7 +50,7 @@ python scripts\evaluate.py --split both
 python scripts\plot_training.py
 ```
 
-This writes to `runs/trash_yolov8n_v2/quality_check/`:
+`evaluate.py` defaults to v3 and writes under `runs/dl/trash_yolov8n_v3/quality_check/`. (Older v2 output lives in `runs/dl/trash_yolov8n_v2/quality_check/`.)
 
 - `REPORT.md` — overall + per-class table
 - `val_metrics.json`, `test_metrics.json`
@@ -72,7 +66,7 @@ Run handcrafted feature analysis first (spatial + frequency domains) and classic
 python scripts\feature_ml_analysis.py --data merged_dataset_v3\data.yaml
 ```
 
-Outputs are written to `runs/feature_ml_analysis/`:
+Outputs are written to `runs/ml/feature_ml_analysis/` (override with `--out`):
 
 - `metrics_summary.json` — Accuracy/F1 summary by model
 - `classification_reports.json` — full per-class precision/recall/F1
@@ -83,7 +77,7 @@ Outputs are written to `runs/feature_ml_analysis/`:
 - `chart_model_comparison.png` — model comparison chart
 - `REPORT.md` — rationale, chart comments, and conclusions
 
-Also exports domain summaries to `frequency_analysis/`:
+Also exports domain summaries to `ml/frequency_analysis/`:
 
 - `spatial_summary.csv` — spatial features by class
 - `frequency_summary.csv` — frequency features by class
@@ -105,8 +99,8 @@ python scripts\compare_ml_dl.py
 
 Outputs:
 
-- `runs/dl_baseline/metrics.json`, `confusion_tiny_cnn.png`, `training_loss.png`
-- `runs/model_comparison/REPORT.md`, `comparison_metrics.json`, `chart_ml_vs_dl.png`
+- `runs/dl/dl_baseline/metrics.json`, `confusion_tiny_cnn.png`, `training_loss.png`
+- `runs/comparisons/model_comparison/REPORT.md`, `comparison_metrics.json`, `chart_ml_vs_dl.png`
 
 ### How to interpret
 
@@ -136,8 +130,8 @@ Produces (next to `best.pt`):
 Copy the two TFLite files into `mobile/assets/model/`:
 
 ```powershell
-Copy-Item runs\trash_yolov8n_v2\weights\best_int8.tflite mobile\assets\model\
-Copy-Item runs\trash_yolov8n_v2\weights\best_float16.tflite mobile\assets\model\
+Copy-Item runs\dl\trash_yolov8n_v3\weights\best_int8.tflite mobile\assets\model\
+Copy-Item runs\dl\trash_yolov8n_v3\weights\best_float16.tflite mobile\assets\model\
 ```
 
 ## 3 · Run the mobile app
@@ -158,9 +152,9 @@ npm run android     # or: npm run ios
 ```powershell
 # Longer training + bigger image size
 yolo detect train `
-  model=runs\trash_yolov8n\weights\best.pt `
-  data=merged_dataset_v2\data.yaml `
+  model=runs\dl\trash_yolov8n\weights\best.pt `
+  data=merged_dataset_v3\data.yaml `
   epochs=50 imgsz=800 batch=16 `
-  project=runs name=trash_yolov8n_v3 exist_ok=True
+  project=runs\dl name=trash_yolov8n_v4 exist_ok=True
 ```
 

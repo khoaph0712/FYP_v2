@@ -1,8 +1,8 @@
 """Plot training curves (loss + mAP) from a YOLOv8 `results.csv`.
 
 Usage:
-    python scripts/plot_training.py                                   # uses v2 run
-    python scripts/plot_training.py --csv runs/trash_yolov8n/results.csv
+    python scripts/plot_training.py                                   # uses v3 run under runs/dl/
+    python scripts/plot_training.py --csv runs/dl/trash_yolov8n_v3/results.csv
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CSV = ROOT / "runs" / "trash_yolov8n_v2" / "results.csv"
+DEFAULT_CSV = ROOT / "runs" / "dl" / "trash_yolov8n_v3" / "results.csv"
 
 
 def plot(csv_path: Path, out_dir: Path) -> None:

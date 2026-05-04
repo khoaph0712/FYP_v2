@@ -1,10 +1,10 @@
-"""Count labels per class in merged_dataset_v2 to identify imbalance."""
+"""Count labels per class in a YOLO dataset folder (default merged_dataset_v3)."""
 from pathlib import Path
 from collections import Counter
 
 import sys
 
-ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else r"C:\FYP_v2\merged_dataset_v2")
+ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else r"C:\FYP_v2\merged_dataset_v3")
 names = ["plastic", "glass", "metal", "paper", "cardboard", "organic", "other"]
 
 totals = {split: Counter() for split in ("train", "valid", "test")}

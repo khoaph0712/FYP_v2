@@ -13,9 +13,9 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_ML = ROOT / "runs" / "feature_ml_analysis" / "metrics_summary.json"
-DEFAULT_DL = ROOT / "runs" / "dl_baseline" / "metrics.json"
-DEFAULT_OUT = ROOT / "runs" / "model_comparison"
+DEFAULT_ML = ROOT / "runs" / "ml" / "feature_ml_6class_4k" / "metrics_summary.json"
+DEFAULT_DL = ROOT / "runs" / "dl" / "dl_baseline" / "metrics.json"
+DEFAULT_OUT = ROOT / "runs" / "comparisons" / "model_comparison"
 
 
 def main() -> None:
@@ -92,8 +92,8 @@ def main() -> None:
     lines.append("## Artifacts")
     lines.append("- `chart_ml_vs_dl.png`")
     lines.append("- `comparison_metrics.json`")
-    lines.append("- `runs/feature_ml_analysis/*`")
-    lines.append("- `runs/dl_baseline/*`")
+    lines.append("- `runs/ml/feature_ml_6class_4k/*` (or your chosen `--ml-metrics` run)")
+    lines.append("- `runs/dl/dl_baseline/*`")
 
     (args.out / "REPORT.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"[OK] Done. See {args.out}")

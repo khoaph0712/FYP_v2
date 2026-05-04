@@ -1,0 +1,3 @@
+metric,spatial_value,frequency_value,note
+feature_count,8,9,"Spatial has 8 handcrafted features, Frequency has 9 FFT-derived features"
+model_importance_pct,52.3155,47.6845,From RandomForest feature_importances_

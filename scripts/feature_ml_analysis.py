@@ -1,12 +1,12 @@
 """Feature-based ML analysis for waste-object classification.
 
-Pipeline (lecture-requested):
-1) Extract object crops from YOLO labels (bbox -> crop)
-2) Compute handcrafted features in both domains:
-   - Spatial domain: intensity/texture/edge statistics
-   - Frequency domain: FFT radial-energy distribution
-3) Train classic ML baselines first (LogReg, SVM, RandomForest)
-4) Export comparison tables, confusion matrices, and chart commentary
+Lecture-style workflow (do not reorder when presenting results):
+1) **Spatial domain + frequency domain** — build descriptors for each object crop
+   (spatial statistics + FFT radial energy).
+2) **Analyse and comment** — explain how object *classes* differ using those domains
+   (see REPORT / object_difference.json and ml/frequency_analysis/*.csv).
+3) **Extract features first, then ML** — classical models are trained only on the
+   stacked feature vectors from (1), not on raw pixels inside this script.
 """
 
 from __future__ import annotations
@@ -40,8 +40,33 @@ from sklearn.svm import SVC
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA = ROOT / "merged_dataset_v3" / "data.yaml"
-DEFAULT_OUT = ROOT / "runs" / "feature_ml_analysis"
-DEFAULT_DOMAIN_OUT = ROOT / "frequency_analysis"
+DEFAULT_OUT = ROOT / "runs" / "ml" / "feature_ml_analysis"
+DEFAULT_DOMAIN_OUT = ROOT / "ml" / "frequency_analysis"
+
+# Combined feature layout: spatial (0..7) then frequency (8..16) — keep in sync with extract_*().
+FEATURE_SPATIAL_NAMES = [
+    "mean_intensity",
+    "std_intensity",
+    "p10_intensity",
+    "p50_intensity",
+    "p90_intensity",
+    "grad_mean",
+    "grad_std",
+    "edge_density",
+]
+FEATURE_FREQ_NAMES = [
+    "fft_bin_1",
+    "fft_bin_2",
+    "fft_bin_3",
+    "fft_bin_4",
+    "fft_bin_5",
+    "fft_bin_6",
+    "fft_bin_7",
+    "fft_bin_8",
+    "high_freq_energy",
+]
+N_SPATIAL = len(FEATURE_SPATIAL_NAMES)
+N_FREQ = len(FEATURE_FREQ_NAMES)
 
 
 @dataclass
@@ -61,6 +86,21 @@ def resolve_split_images(ds_root: Path, split_rel: str) -> Path:
 def image_to_label_path(image_path: Path) -> Path:
     # YOLO layout: */images/*.jpg -> */labels/*.txt
     return Path(str(image_path).replace("\\images\\", "\\labels\\")).with_suffix(".txt")
+
+
+def filter_class_schedule(
+    class_names: list[str], exclude_class_names: list[str]
+) -> tuple[list[str], dict[int, int]]:
+    """Drop excluded classes and map remaining YOLO class ids to 0..K-1."""
+    ex = {x.strip().lower() for x in exclude_class_names if x.strip()}
+    kept: list[str] = []
+    old_to_new: dict[int, int] = {}
+    for old_id, name in enumerate(class_names):
+        if name.lower() in ex:
+            continue
+        old_to_new[old_id] = len(kept)
+        kept.append(name)
+    return kept, old_to_new
 
 
 def clamp_box(x1: int, y1: int, x2: int, y2: int, w: int, h: int) -> tuple[int, int, int, int]:
@@ -132,19 +172,30 @@ def extract_combined_features(crop_bgr: np.ndarray) -> np.ndarray:
 
 def load_samples(
     image_dir: Path,
-    class_names: list[str],
+    kept_class_names: list[str],
+    old_to_new: dict[int, int],
+    full_nc: int,
     max_objects: int | None,
+    max_per_class: int | None = None,
     min_box_px: int = 10,
+    seed: int = 42,
 ) -> list[Sample]:
     image_paths = [
         p
         for p in image_dir.rglob("*")
         if p.suffix.lower() in {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
     ]
-    image_paths.sort()
+    rng = random.Random(seed)
+    rng.shuffle(image_paths)
+
+    n_kept = len(kept_class_names)
+    counts = [0] * n_kept if max_per_class is not None else None
 
     samples: list[Sample] = []
     for img_path in image_paths:
+        if max_per_class is not None and counts is not None and all(c >= max_per_class for c in counts):
+            break
+
         label_path = image_to_label_path(img_path)
         if not label_path.exists():
             continue
@@ -160,7 +211,12 @@ def load_samples(
             if len(parts) != 5:
                 continue
             cls_id = int(float(parts[0]))
-            if cls_id < 0 or cls_id >= len(class_names):
+            if cls_id < 0 or cls_id >= full_nc:
+                continue
+            if cls_id not in old_to_new:
+                continue
+            new_id = old_to_new[cls_id]
+            if max_per_class is not None and counts is not None and counts[new_id] >= max_per_class:
                 continue
 
             cx, cy, bw, bh = [float(x) for x in parts[1:]]
@@ -175,11 +231,13 @@ def load_samples(
 
             crop = img[y1:y2, x1:x2]
             feat = extract_combined_features(crop)
-            samples.append(Sample(feat, cls_id, class_names[cls_id]))
+            samples.append(Sample(feat, new_id, kept_class_names[new_id]))
+            if counts is not None:
+                counts[new_id] += 1
 
     if max_objects is None or len(samples) <= max_objects:
         return samples
-    return stratified_subsample(samples, max_objects, len(class_names), seed=42)
+    return stratified_subsample(samples, max_objects, n_kept, seed=42)
 
 
 def stratified_subsample(samples: list[Sample], max_objects: int, n_classes: int, seed: int = 42) -> list[Sample]:
@@ -217,21 +275,54 @@ def to_matrix(samples: list[Sample]) -> tuple[np.ndarray, np.ndarray]:
 
 
 def object_difference_report(x_train: np.ndarray, y_train: np.ndarray, class_names: list[str]) -> list[dict]:
-    feature_means = {}
+    """Per-class deviation from global mean, split into spatial vs frequency commentary (lecture)."""
+    assert x_train.shape[1] == N_SPATIAL + N_FREQ
+    global_mean = np.mean(x_train, axis=0)
+
+    feature_means: dict[int, np.ndarray] = {}
     for cid in np.unique(y_train):
         feature_means[int(cid)] = np.mean(x_train[y_train == cid], axis=0)
 
-    global_mean = np.mean(x_train, axis=0)
-    report = []
+    report: list[dict] = []
     for cid, mu in feature_means.items():
         delta = np.abs(mu - global_mean)
-        top_idx = np.argsort(-delta)[:3].tolist()
+        d_sp = delta[:N_SPATIAL]
+        d_fq = delta[N_SPATIAL:]
+        top_sp = np.argsort(-d_sp)[:3].tolist()
+        top_fq = np.argsort(-d_fq)[:3].tolist()
+        spatial_score = float(np.mean(d_sp[top_sp]))
+        freq_score = float(np.mean(d_fq[top_fq]))
+        top_any = np.argsort(-delta)[:3].tolist()
+        overall = float(np.mean(delta[top_any]))
+
+        if spatial_score > freq_score * 1.12:
+            dom_phrase = "more in the **spatial** domain than in frequency"
+        elif freq_score > spatial_score * 1.12:
+            dom_phrase = "more in the **frequency** domain than in spatial texture/intensity"
+        else:
+            dom_phrase = "in **both spatial and frequency** domains about equally"
+
+        sp_names = ", ".join(FEATURE_SPATIAL_NAMES[i] for i in top_sp)
+        fq_names = ", ".join(FEATURE_FREQ_NAMES[i] for i in top_fq)
+        lecture_comment = (
+            f"Compared to the dataset average, **{class_names[cid]}** differs {dom_phrase}: "
+            f"strongest spatial shifts involve `{sp_names}`; "
+            f"strongest frequency shifts involve `{fq_names}`."
+        )
+
         report.append(
             {
                 "class_id": cid,
                 "class_name": class_names[cid],
-                "most_distinct_feature_indices": top_idx,
-                "distinctiveness_score": float(np.mean(delta[top_idx])),
+                "most_distinct_feature_indices": top_any,
+                "distinctiveness_score": overall,
+                "spatial_top_indices": top_sp,
+                "spatial_top_names": [FEATURE_SPATIAL_NAMES[i] for i in top_sp],
+                "spatial_distinctiveness": spatial_score,
+                "frequency_top_indices": top_fq,
+                "frequency_top_names": [FEATURE_FREQ_NAMES[i] for i in top_fq],
+                "frequency_distinctiveness": freq_score,
+                "lecture_comment": lecture_comment,
             }
         )
     report.sort(key=lambda r: r["distinctiveness_score"], reverse=True)
@@ -285,8 +376,6 @@ def save_comparison_chart(results: list[dict], out_path: Path) -> None:
 
 
 def save_domain_importance_chart(trained_models: dict[str, object], out_path: Path) -> None:
-    # Feature layout:
-    # 0..7 spatial, 8..16 frequency (8 radial bins + 1 high-freq summary).
     importances = None
     source = None
 
@@ -298,8 +387,8 @@ def save_domain_importance_chart(trained_models: dict[str, object], out_path: Pa
     if importances is None:
         raise ValueError("Cannot build domain-importance chart: no model with feature importance is available.")
 
-    spatial_sum = float(np.sum(importances[:8]))
-    frequency_sum = float(np.sum(importances[8:]))
+    spatial_sum = float(np.sum(importances[:N_SPATIAL]))
+    frequency_sum = float(np.sum(importances[N_SPATIAL:]))
     denom = spatial_sum + frequency_sum + 1e-12
     spatial_pct = 100.0 * spatial_sum / denom
     frequency_pct = 100.0 * frequency_sum / denom
@@ -328,52 +417,30 @@ def export_domain_summaries(
 ) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    spatial_names = [
-        "mean_intensity",
-        "std_intensity",
-        "p10_intensity",
-        "p50_intensity",
-        "p90_intensity",
-        "grad_mean",
-        "grad_std",
-        "edge_density",
-    ]
-    frequency_names = [
-        "fft_bin_1",
-        "fft_bin_2",
-        "fft_bin_3",
-        "fft_bin_4",
-        "fft_bin_5",
-        "fft_bin_6",
-        "fft_bin_7",
-        "fft_bin_8",
-        "high_freq_energy",
-    ]
-
     spatial_csv = out_dir / "spatial_summary.csv"
     with spatial_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["class_id", "class_name", "n_objects", *spatial_names])
+        w.writerow(["class_id", "class_name", "n_objects", *FEATURE_SPATIAL_NAMES])
         for cid in range(len(class_names)):
             mask = y_train == cid
             n = int(np.sum(mask))
             if n == 0:
-                vals = [0.0] * len(spatial_names)
+                vals = [0.0] * N_SPATIAL
             else:
-                vals = np.mean(x_train[mask, :8], axis=0).tolist()
+                vals = np.mean(x_train[mask, :N_SPATIAL], axis=0).tolist()
             w.writerow([cid, class_names[cid], n, *[round(float(v), 6) for v in vals]])
 
     frequency_csv = out_dir / "frequency_summary.csv"
     with frequency_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["class_id", "class_name", "n_objects", *frequency_names])
+        w.writerow(["class_id", "class_name", "n_objects", *FEATURE_FREQ_NAMES])
         for cid in range(len(class_names)):
             mask = y_train == cid
             n = int(np.sum(mask))
             if n == 0:
-                vals = [0.0] * len(frequency_names)
+                vals = [0.0] * N_FREQ
             else:
-                vals = np.mean(x_train[mask, 8:], axis=0).tolist()
+                vals = np.mean(x_train[mask, N_SPATIAL:], axis=0).tolist()
             w.writerow([cid, class_names[cid], n, *[round(float(v), 6) for v in vals]])
 
     comparison_csv = out_dir / "domain_comparison.csv"
@@ -394,9 +461,9 @@ def export_domain_summaries(
         w.writerow(
             [
                 "feature_count",
-                8,
-                9,
-                "Spatial has 8 handcrafted features, Frequency has 9 FFT-derived features",
+                N_SPATIAL,
+                N_FREQ,
+                f"Spatial has {N_SPATIAL} handcrafted features, Frequency has {N_FREQ} FFT-derived features",
             ]
         )
         w.writerow(
@@ -421,41 +488,61 @@ def write_report(
     lines.append("# Feature + ML Analysis Report\n")
     lines.append("## Scope")
     lines.append("- Mobile is intentionally excluded in this stage.")
-    lines.append("- Focus: feature extraction + classical ML model comparison.\n")
+    lines.append("- Focus: feature extraction + classical ML model comparison.")
+    lines.append(f"- Classes in this run: {', '.join(class_names)}\n")
 
-    lines.append("## Pipeline")
-    lines.append("1. Extract object crops from YOLO labels.")
-    lines.append("2. Extract spatial-domain and frequency-domain features.")
-    lines.append("3. Train ML models first (LogReg, SVM-RBF, RandomForest).")
-    lines.append("4. Compare with accuracy/F1/confusion matrix.\n")
+    lines.append("## Lecture workflow checklist")
+    lines.append(
+        "1. **Spatial + frequency domains** — each crop gets handcrafted **spatial** statistics "
+        "(intensity, gradients, edges) and **frequency** descriptors (2D FFT radial energy bins + high-frequency summary)."
+    )
+    lines.append(
+        "2. **Comment how objects differ** — before judging ML scores, read the per-class notes below and "
+        "`ml/frequency_analysis/spatial_summary.csv` + `frequency_summary.csv` (class-wise means)."
+    )
+    lines.append(
+        "3. **Extract features, then ML** — LogReg / SVM / RandomForest are trained **only** on the stacked "
+        "17-D feature vectors from step 1 (not raw pixels inside this script).\n"
+    )
+
+    lines.append("## Pipeline (implementation order)")
+    lines.append("1. Crop objects from YOLO boxes; build the fixed-length feature vector per crop.")
+    lines.append("2. Export domain CSVs + object-difference commentary (spatial vs frequency).")
+    lines.append("3. Fit classical ML on `X_train`; evaluate on `X_test`.\n")
 
     lines.append("## Data")
-    lines.append(f"- Train objects: **{train_count}**")
-    lines.append(f"- Test objects: **{test_count}**")
+    lines.append(f"- Train object crops: **{train_count}**")
+    lines.append(f"- Test object crops: **{test_count}**")
+    lines.append(
+        "- Counts come from a **per-class** cap when enabled (each class can reach the cap independently; "
+        "this is not a single 4000-total budget split across classes)."
+    )
     lines.append(f"- Classes: {', '.join(class_names)}\n")
 
-    lines.append("## Model choice rationale")
-    lines.append("- **Logistic Regression:** simple linear baseline on standardized feature vectors.")
-    lines.append("- **SVM (RBF):** captures non-linear class boundaries from handcrafted features.")
-    lines.append("- **Random Forest:** robust tree-based baseline and interpretable feature importance.\n")
+    lines.append("## Comments: how object classes differ (spatial vs frequency)")
+    lines.append(
+        "Each bullet compares that class’s **mean feature vector** to the **global mean** over all training crops: "
+        "which domain (spatial / frequency / both) shows the largest shift, and which named descriptors move most."
+    )
+    for item in object_diff:
+        lines.append(f"- {item['lecture_comment']}")
+        lines.append(
+            f"  - *Scores:* overall `{item['distinctiveness_score']:.4f}`, spatial `{item['spatial_distinctiveness']:.4f}`, "
+            f"frequency `{item['frequency_distinctiveness']:.4f}`."
+        )
+    lines.append("")
 
-    lines.append("## Results")
+    lines.append("## ML results (features → models)")
     lines.append("| Model | Accuracy | F1-macro |")
     lines.append("|---|---:|---:|")
     for r in results:
         lines.append(f"| {r['model']} | {r['accuracy']:.4f} | {r['f1_macro']:.4f} |")
     lines.append("")
 
-    lines.append("## Class difference comments (objects)")
-    lines.append(
-        "Top distinct feature indices are reported to explain which classes differ most in spatial/frequency signatures."
-    )
-    for item in object_diff:
-        lines.append(
-            f"- **{item['class_name']}**: distinctiveness `{item['distinctiveness_score']:.4f}`, "
-            f"top feature idx `{item['most_distinct_feature_indices']}`"
-        )
-    lines.append("")
+    lines.append("## Model choice rationale")
+    lines.append("- **Logistic Regression:** simple linear baseline on standardized feature vectors.")
+    lines.append("- **SVM (RBF):** captures non-linear class boundaries from handcrafted features.")
+    lines.append("- **Random Forest:** robust tree-based baseline and interpretable feature importance.\n")
 
     lines.append("## Chart comments")
     lines.append(
@@ -475,6 +562,24 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    parser.add_argument(
+        "--exclude-classes",
+        type=str,
+        default="other",
+        help="Comma-separated names to drop from data.yaml (e.g. other). Empty string = keep all.",
+    )
+    parser.add_argument(
+        "--max-per-class-train",
+        type=int,
+        default=4000,
+        help="Max object crops PER CLASS on train (each class independently; NOT a 4k total cap). 0 = off, use --max-train-objects.",
+    )
+    parser.add_argument(
+        "--max-per-class-test",
+        type=int,
+        default=4000,
+        help="Max object crops PER CLASS on test (each class independently, not total). 0 = off, use --max-test-objects.",
+    )
     parser.add_argument("--max-train-objects", type=int, default=8000)
     parser.add_argument("--max-test-objects", type=int, default=3000)
     parser.add_argument("--domain-out", type=Path, default=DEFAULT_DOMAIN_OUT)
@@ -482,28 +587,68 @@ def main() -> None:
 
     cfg = yaml.safe_load(args.data.read_text(encoding="utf-8"))
     class_names = list(cfg["names"])
+    full_nc = len(class_names)
     ds_root = Path(cfg["path"])
+
+    exclude_list = [s.strip() for s in args.exclude_classes.split(",") if s.strip()]
+    kept_names, old_to_new = filter_class_schedule(class_names, exclude_list)
+    if not kept_names:
+        raise SystemExit("All classes excluded; fix --exclude-classes.")
 
     train_img_dir = resolve_split_images(ds_root, cfg["train"])
     test_img_dir = resolve_split_images(ds_root, cfg.get("test", cfg["val"]))
 
     args.out.mkdir(parents=True, exist_ok=True)
 
-    print("[1/4] Extracting train features...")
-    train_samples = load_samples(train_img_dir, class_names, args.max_train_objects)
+    max_per_train = args.max_per_class_train if args.max_per_class_train > 0 else None
+    max_per_test = args.max_per_class_test if args.max_per_class_test > 0 else None
+    train_max_obj = None if max_per_train is not None else args.max_train_objects
+    test_max_obj = None if max_per_test is not None else args.max_test_objects
+
+    print(
+        f"Using {len(kept_names)} classes {kept_names}"
+        + (f" (excluded: {exclude_list})" if exclude_list else "")
+    )
+    print("Sampling caps are per class (e.g. 4000 plastic + 4000 glass + ...), not a single global 4k limit.")
+    if max_per_train:
+        print(f"Train: up to {max_per_train} object crops per class.")
+    if max_per_test:
+        print(f"Test: up to {max_per_test} object crops per class.")
+
+    print("[1/5] Extracting train features (spatial + frequency domains)...")
+    train_samples = load_samples(
+        train_img_dir,
+        kept_names,
+        old_to_new,
+        full_nc,
+        train_max_obj,
+        max_per_class=max_per_train,
+    )
     if not train_samples:
         raise SystemExit(f"No train samples loaded from {train_img_dir}")
     x_train, y_train = to_matrix(train_samples)
 
-    print("[2/4] Extracting test features...")
-    test_samples = load_samples(test_img_dir, class_names, args.max_test_objects)
+    print("[2/5] Analysis: how object classes differ (train features vs global mean)...")
+    object_diff = object_difference_report(x_train, y_train, kept_names)
+    (args.out / "object_difference.json").write_text(json.dumps(object_diff, indent=2), encoding="utf-8")
+
+    print("[3/5] Extracting test features...")
+    test_samples = load_samples(
+        test_img_dir,
+        kept_names,
+        old_to_new,
+        full_nc,
+        test_max_obj,
+        max_per_class=max_per_test,
+    )
     if not test_samples:
         raise SystemExit(f"No test samples loaded from {test_img_dir}")
     x_test, y_test = to_matrix(test_samples)
 
+    k = len(kept_names)
     class_support = {
-        "train": {class_names[i]: int(v) for i, v in enumerate(np.bincount(y_train, minlength=len(class_names)))},
-        "test": {class_names[i]: int(v) for i, v in enumerate(np.bincount(y_test, minlength=len(class_names)))},
+        "train": {kept_names[i]: int(v) for i, v in enumerate(np.bincount(y_train, minlength=k))},
+        "test": {kept_names[i]: int(v) for i, v in enumerate(np.bincount(y_test, minlength=k))},
     }
     (args.out / "class_support.json").write_text(json.dumps(class_support, indent=2), encoding="utf-8")
 
@@ -512,7 +657,7 @@ def main() -> None:
     detailed: dict[str, dict] = {}
     trained_models: dict[str, object] = {}
 
-    print("[3/4] Training ML models...")
+    print("[4/5] Training ML models on extracted features only...")
     for name, model in models.items():
         print(f"  - {name}")
         model.fit(x_train, y_train)
@@ -525,30 +670,27 @@ def main() -> None:
         detailed[name] = classification_report(
             y_test,
             pred,
-            labels=list(range(len(class_names))),
-            target_names=class_names,
+            labels=list(range(k)),
+            target_names=kept_names,
             output_dict=True,
             zero_division=0,
         )
-        save_confusion(y_test, pred, class_names, args.out / f"confusion_{name}.png", f"Confusion matrix - {name}")
+        save_confusion(y_test, pred, kept_names, args.out / f"confusion_{name}.png", f"Confusion matrix - {name}")
 
     results.sort(key=lambda r: (r["f1_macro"], r["accuracy"]), reverse=True)
     (args.out / "metrics_summary.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
     (args.out / "classification_reports.json").write_text(json.dumps(detailed, indent=2), encoding="utf-8")
 
-    object_diff = object_difference_report(x_train, y_train, class_names)
-    (args.out / "object_difference.json").write_text(json.dumps(object_diff, indent=2), encoding="utf-8")
-
-    print("[4/4] Saving charts + report...")
+    print("[5/5] Saving charts, domain CSVs, and report...")
     save_comparison_chart(results, args.out / "chart_model_comparison.png")
     save_domain_importance_chart(trained_models, args.out / "chart_domain_importance.png")
     rf_importances = np.asarray(trained_models["rf"].feature_importances_, dtype=np.float64)
-    spatial_sum = float(np.sum(rf_importances[:8]))
-    frequency_sum = float(np.sum(rf_importances[8:]))
+    spatial_sum = float(np.sum(rf_importances[:N_SPATIAL]))
+    frequency_sum = float(np.sum(rf_importances[N_SPATIAL:]))
     denom = spatial_sum + frequency_sum + 1e-12
     domain_importance = (100.0 * spatial_sum / denom, 100.0 * frequency_sum / denom)
-    export_domain_summaries(x_train, y_train, class_names, args.domain_out, domain_importance)
-    write_report(args.out, class_names, len(train_samples), len(test_samples), results, object_diff)
+    export_domain_summaries(x_train, y_train, kept_names, args.domain_out, domain_importance)
+    write_report(args.out, kept_names, len(train_samples), len(test_samples), results, object_diff)
 
     print(f"[OK] Done. See {args.out} and {args.domain_out}")
 

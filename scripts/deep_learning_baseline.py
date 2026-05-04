@@ -21,7 +21,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA = ROOT / "merged_dataset_v3" / "data.yaml"
-DEFAULT_OUT = ROOT / "runs" / "dl_baseline"
+DEFAULT_OUT = ROOT / "runs" / "dl" / "dl_baseline"
 
 
 def resolve_split_images(ds_root: Path, split_rel: str) -> Path:
