@@ -483,9 +483,69 @@ def write_report(
     test_count: int,
     results: list[dict],
     object_diff: list[dict],
+    *,
+    data_yaml: Path,
+    dataset_root: Path,
+    yaml_all_classes: list[str],
+    excluded_classes: list[str],
 ) -> None:
     lines: list[str] = []
     lines.append("# Feature + ML Analysis Report\n")
+
+    lines.append("## Dataset and classes (examiner checklist)")
+    lines.append(f"- **Dataset:** YOLO-format merged dataset at `{dataset_root}` (config: `{data_yaml}`).")
+    lines.append(
+        f"- **Classes defined in `data.yaml`:** **{len(yaml_all_classes)}** — "
+        f"{', '.join(yaml_all_classes)}."
+    )
+    if excluded_classes:
+        lines.append(
+            f"- **Classes used in this ML run:** **{len(class_names)}** — "
+            f"{', '.join(class_names)} (excluded from training/eval here: **{', '.join(excluded_classes)}**)."
+        )
+    else:
+        lines.append(f"- **Classes used in this ML run:** **{len(class_names)}** — {', '.join(class_names)}.")
+    lines.append(
+        "- **Class balance:** The **raw** dataset splits can be **imbalanced** (different sources merged into "
+        "`merged_dataset_v3`). When per-class caps are enabled, this script samples **up to N object crops per class** "
+        "on train/test so counts are **intentionally balanced at the crop level** where enough boxes exist; "
+        "see `class_support.json` for exact train/test counts. Rare classes may still fall **below** the cap."
+    )
+    lines.append("")
+
+    lines.append("## Handcrafted features used for ML (not raw pixels)")
+    lines.append(
+        f"Each object crop is resized (gray 64×64 internally), then summarized into **{N_SPATIAL + N_FREQ}** floats."
+    )
+    lines.append("### Spatial domain (8 features)")
+    for i, name in enumerate(FEATURE_SPATIAL_NAMES):
+        lines.append(f"{i + 1}. `{name}`")
+    lines.append("### Frequency domain (9 features; FFT radial bins + `high_freq_energy`)")
+    for i, name in enumerate(FEATURE_FREQ_NAMES):
+        lines.append(f"{i + 9}. `{name}`")
+    lines.append("")
+
+    lines.append("## Models trained on extracted features")
+    lines.append("| Model | Role |")
+    lines.append("|---|---|")
+    lines.append("| `logreg` | Logistic Regression on **StandardScaler**-normalized features (linear baseline). |")
+    lines.append("| `svm_rbf` | **SVM RBF kernel** on scaled features (non-linear boundary baseline). |")
+    lines.append("| `rf` | **RandomForestClassifier** (300 trees) — tree baseline + feature importance for charts. |")
+    lines.append("")
+
+    lines.append("## Figures to include in the thesis / lecturer report")
+    lines.append("**Classical ML (this folder)**")
+    lines.append("- `chart_model_comparison.png` — Accuracy & F1-macro across ML models (no epoch-wise loss; ML is not trained by gradient descent here).")
+    lines.append("- `confusion_logreg.png`, `confusion_svm_rbf.png`, `confusion_rf.png` — confusion matrices.")
+    lines.append("- `chart_domain_importance.png` — spatial vs frequency contribution (RF feature importance).")
+    lines.append("- `ml/frequency_analysis/` — spatial/frequency summary CSVs + optional spectrum plots.")
+    lines.append("**Deep learning (separate runs; loss / training curves)**")
+    lines.append("- `runs/dl/trash_yolov8n_v3/results.png` — Ultralytics training curves (loss, mAP, precision, recall).")
+    lines.append("- `runs/dl/trash_yolov8n_v3/results.csv` — numeric log for custom plots.")
+    lines.append("- Run `python scripts/plot_training.py` → writes `training_curves.png` next to the chosen run’s `quality_check/`.")
+    lines.append("- `runs/dl/dl_baseline/training_loss.png` — tiny CNN baseline loss vs epoch on crops.")
+    lines.append("")
+
     lines.append("## Scope")
     lines.append("- Mobile is intentionally excluded in this stage.")
     lines.append("- Focus: feature extraction + classical ML model comparison.")
@@ -690,7 +750,18 @@ def main() -> None:
     denom = spatial_sum + frequency_sum + 1e-12
     domain_importance = (100.0 * spatial_sum / denom, 100.0 * frequency_sum / denom)
     export_domain_summaries(x_train, y_train, kept_names, args.domain_out, domain_importance)
-    write_report(args.out, kept_names, len(train_samples), len(test_samples), results, object_diff)
+    write_report(
+        args.out,
+        kept_names,
+        len(train_samples),
+        len(test_samples),
+        results,
+        object_diff,
+        data_yaml=args.data.resolve(),
+        dataset_root=ds_root.resolve(),
+        yaml_all_classes=list(cfg["names"]),
+        excluded_classes=exclude_list,
+    )
 
     print(f"[OK] Done. See {args.out} and {args.domain_out}")
 
