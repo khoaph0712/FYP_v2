@@ -14,10 +14,12 @@ Em dùng **`merged_dataset_v3`** — bộ dữ liệu YOLO (thư mục `train/`,
 
 ## 2. Em train bao nhiêu class?
 
-| Nhánh | Số class | Ghi chú |
-|--------|-----------|---------|
-| **YOLO / DL detector** (Ultralytics) | **7** | `plastic`, `glass`, `metal`, `paper`, `cardboard`, `organic`, `other` — đúng `nc: 7` trong `data.yaml`. |
-| **ML handcrafted features** (script hiện tại) | **6** | Em **loại `other`** khỏi phần ML phân tích để tập trung các lớp rác có nhãn rõ hơn; số lớp trong báo cáo ML là **6**. |
+
+| Nhánh                                         | Số class | Ghi chú                                                                                                               |
+| --------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
+| **YOLO / DL detector** (Ultralytics)          | **7**    | `plastic`, `glass`, `metal`, `paper`, `cardboard`, `organic`, `other` — đúng `nc: 7` trong `data.yaml`.               |
+| **ML handcrafted features** (script hiện tại) | **6**    | Em **loại `other`** khỏi phần ML phân tích để tập trung các lớp rác có nhãn rõ hơn; số lớp trong báo cáo ML là **6**. |
+
 
 Nếu cô hỏi “tại sao ML 6 mà YOLO 7”: em ghi ràng là **cùng dataset**, nhưng **ML run có chọn exclude một lớp** (`other`) theo hướng dẫn thí nghiệm.
 
@@ -67,11 +69,13 @@ Nếu cô hỏi “tại sao ML 6 mà YOLO 7”: em ghi ràng là **cùng datase
 
 ### Models (ML trên vector trên)
 
-| Tên trong code | Mô hình |
-|----------------|---------|
-| `logreg` | Logistic Regression + Chuẩn hóa `StandardScaler` |
-| `svm_rbf` | SVM kernel RBF trên đặc trưng đã scale |
-| `rf` | Random Forest (300 cây), có feature importance cho biểu đồ spatial vs frequency |
+
+| Tên trong code | Mô hình                                                                         |
+| -------------- | ------------------------------------------------------------------------------- |
+| `logreg`       | Logistic Regression + Chuẩn hóa `StandardScaler`                                |
+| `svm_rbf`      | SVM kernel RBF trên đặc trưng đã scale                                          |
+| `rf`           | Random Forest (300 cây), có feature importance cho biểu đồ spatial vs frequency |
+
 
 *(YOLO / tiny CNN là nhánh DL riêng — em liệt kê trong mục DL của báo cáo.)*
 
