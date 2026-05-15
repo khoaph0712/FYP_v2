@@ -28,7 +28,6 @@ Current headline results:
 
 ```
 C:\FYP_v2
-├── merged_dataset_v2\             # legacy 7-class dataset (optional; v3 is default in scripts)
 ├── merged_dataset_v3\             # canonical 7-class dataset (train/valid/test)
 ├── ml\
 │   └── frequency_analysis\        # spatial/frequency CSVs + plots (from feature_ml_analysis.py)
