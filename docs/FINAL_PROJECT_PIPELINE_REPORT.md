@@ -248,8 +248,8 @@ Manual demo:
 
 | Image | Detected class | Confidence | Sorting output | Note |
 |---|---|---:|---|---|
-| `87514.jpg` | plastic | 0.1658 | recyclable | Weak confidence; use as demo of threshold sensitivity |
-| `test.jpg` | none | n/a | no detection | Document as limitation / unfamiliar image case |
+| `assets\manual_test_images\87514.jpg` | plastic | 0.1658 | recyclable | Weak confidence; use as demo of threshold sensitivity |
+| `assets\manual_test_images\test.jpg` | none | n/a | no detection | Document as limitation / unfamiliar image case |
 
 ## 5. Improvement Direction
 

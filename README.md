@@ -232,3 +232,7 @@ yolo detect train `
   epochs=50 imgsz=800 batch=16 `
   project=runs\dl name=trash_yolov8n_v4 exist_ok=True
 ```
+## Local Folder Notes
+
+- `assets\manual_test_images\` - manual demo photos used by the no-UI tester.
+- `models\pretrained\` - downloaded/pretrained model files such as `yolo11n.pt`.
