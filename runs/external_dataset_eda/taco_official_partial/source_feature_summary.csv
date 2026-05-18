@@ -1,0 +1,15 @@
+source,sampled_objects,top_feature_1,top_feature_2,top_feature_3,spatial_mean_abs,frequency_mean_abs,color_mean_abs,hog_mean_abs
+batch_12,505,p50_intensity,p90_intensity,b_mean,104.21331,0.115052,22.232859,0.140863
+batch_8,431,p90_intensity,r_mean,v_mean,72.731689,0.115531,16.335899,0.137021
+batch_6,392,p90_intensity,r_mean,v_mean,76.973656,0.11643,16.85708,0.140933
+batch_10,377,grad_mean,p50_intensity,s_mean,99.414978,0.11477,21.421175,0.141112
+batch_7,358,p10_intensity,grad_mean,r_mean,81.894775,0.115806,17.584934,0.14125
+batch_15,317,p50_intensity,grad_mean,b_mean,102.818794,0.115821,21.810854,0.141624
+batch_9,309,p10_intensity,grad_mean,r_mean,80.121231,0.116337,17.24892,0.140229
+batch_1,309,p50_intensity,p90_intensity,b_mean,95.308228,0.11447,20.954142,0.136215
+batch_5,287,grad_mean,p10_intensity,r_mean,84.611763,0.116904,17.814228,0.139905
+batch_2,287,p50_intensity,p10_intensity,grad_mean,95.023315,0.114274,21.01033,0.136321
+batch_13,274,p50_intensity,p90_intensity,grad_mean,102.756691,0.115044,22.158699,0.139451
+batch_11,235,p50_intensity,grad_mean,b_mean,102.272545,0.115264,22.471992,0.139703
+batch_14,180,p50_intensity,grad_mean,p90_intensity,106.565506,0.11579,22.409742,0.139406
+batch_4,158,grad_mean,r_mean,p10_intensity,86.332718,0.117727,17.671782,0.142576

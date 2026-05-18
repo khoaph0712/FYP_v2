@@ -11,6 +11,11 @@ runs/*/weights/*.onnx
 runs/*/weights/*.tflite
 runs/*/weights/*_saved_model/
 runs/*/quality_check/
+runs/dl/**/ann/*.pt
+runs/dl/**/cnn/*.pt
+
+external_datasets/
+prepared_datasets/
 
 merged_dataset*/
 tuned_dataset*/

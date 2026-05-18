@@ -1,0 +1,1604 @@
+{
+  "decision_tree": {
+    "Aluminium foil": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Clear plastic bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Glass bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Plastic bottle cap": {
+      "precision": 0.09090909090909091,
+      "recall": 0.1,
+      "f1-score": 0.09523809523809523,
+      "support": 10.0
+    },
+    "Metal bottle cap": {
+      "precision": 0.14285714285714285,
+      "recall": 0.125,
+      "f1-score": 0.13333333333333333,
+      "support": 8.0
+    },
+    "Broken glass": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Aerosol": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Drink can": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Other carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Drink carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Corrugated carton": {
+      "precision": 0.125,
+      "recall": 0.2,
+      "f1-score": 0.15384615384615385,
+      "support": 5.0
+    },
+    "Meal carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Paper cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Disposable plastic cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Foam cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Food waste": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic lid": {
+      "precision": 0.25,
+      "recall": 0.25,
+      "f1-score": 0.25,
+      "support": 4.0
+    },
+    "Metal lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Other plastic": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Tissues": {
+      "precision": 0.14285714285714285,
+      "recall": 0.14285714285714285,
+      "f1-score": 0.14285714285714285,
+      "support": 7.0
+    },
+    "Wrapping paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Normal paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Paper bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic film": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Garbage bag": {
+      "precision": 1.0,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.2857142857142857,
+      "support": 6.0
+    },
+    "Other plastic wrapper": {
+      "precision": 0.2,
+      "recall": 0.1,
+      "f1-score": 0.13333333333333333,
+      "support": 10.0
+    },
+    "Single-use carrier bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Crisp packet": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Spread tub": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Disposable food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Foam food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic glooves": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic utensils": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Pop tab": {
+      "precision": 0.25,
+      "recall": 0.2,
+      "f1-score": 0.2222222222222222,
+      "support": 5.0
+    },
+    "Rope & strings": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Scrap metal": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Squeezable tube": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic straw": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Styrofoam piece": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Unlabeled litter": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Cigarette": {
+      "precision": 0.125,
+      "recall": 0.1,
+      "f1-score": 0.1111111111111111,
+      "support": 10.0
+    },
+    "accuracy": 0.039647577092511016,
+    "macro avg": {
+      "precision": 0.055395794681508966,
+      "recall": 0.032964852607709746,
+      "f1-score": 0.03637275422989709,
+      "support": 227.0
+    },
+    "weighted avg": {
+      "precision": 0.06685880199096059,
+      "recall": 0.039647577092511016,
+      "f1-score": 0.04430889717233329,
+      "support": 227.0
+    }
+  },
+  "logreg": {
+    "Aluminium foil": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic bottle": {
+      "precision": 0.15384615384615385,
+      "recall": 0.3333333333333333,
+      "f1-score": 0.21052631578947367,
+      "support": 6.0
+    },
+    "Clear plastic bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Glass bottle": {
+      "precision": 0.07142857142857142,
+      "recall": 0.1,
+      "f1-score": 0.08333333333333333,
+      "support": 10.0
+    },
+    "Plastic bottle cap": {
+      "precision": 0.2857142857142857,
+      "recall": 0.2,
+      "f1-score": 0.23529411764705882,
+      "support": 10.0
+    },
+    "Metal bottle cap": {
+      "precision": 0.5,
+      "recall": 0.375,
+      "f1-score": 0.42857142857142855,
+      "support": 8.0
+    },
+    "Broken glass": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Aerosol": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Drink can": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Other carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Drink carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Corrugated carton": {
+      "precision": 0.2,
+      "recall": 0.2,
+      "f1-score": 0.2,
+      "support": 5.0
+    },
+    "Meal carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Paper cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Disposable plastic cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Foam cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Food waste": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Metal lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Other plastic": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Tissues": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Wrapping paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Normal paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Paper bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic film": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Garbage bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic wrapper": {
+      "precision": 0.2222222222222222,
+      "recall": 0.2,
+      "f1-score": 0.21052631578947367,
+      "support": 10.0
+    },
+    "Single-use carrier bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Crisp packet": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Spread tub": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Disposable food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Foam food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic glooves": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic utensils": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Pop tab": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Rope & strings": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Scrap metal": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Squeezable tube": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic straw": {
+      "precision": 0.08333333333333333,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.1111111111111111,
+      "support": 6.0
+    },
+    "Styrofoam piece": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Unlabeled litter": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Cigarette": {
+      "precision": 0.1,
+      "recall": 0.1,
+      "f1-score": 0.1,
+      "support": 10.0
+    },
+    "accuracy": 0.05726872246696035,
+    "macro avg": {
+      "precision": 0.0384891563462992,
+      "recall": 0.03988095238095238,
+      "f1-score": 0.03760387195813998,
+      "support": 227.0
+    },
+    "weighted avg": {
+      "precision": 0.05822347011774325,
+      "recall": 0.05726872246696035,
+      "f1-score": 0.05572657998975153,
+      "support": 227.0
+    }
+  },
+  "linear_svm": {
+    "Aluminium foil": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic bottle": {
+      "precision": 0.07142857142857142,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.1,
+      "support": 6.0
+    },
+    "Clear plastic bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Glass bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Plastic bottle cap": {
+      "precision": 0.125,
+      "recall": 0.1,
+      "f1-score": 0.1111111111111111,
+      "support": 10.0
+    },
+    "Metal bottle cap": {
+      "precision": 0.3333333333333333,
+      "recall": 0.125,
+      "f1-score": 0.18181818181818182,
+      "support": 8.0
+    },
+    "Broken glass": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Aerosol": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Drink can": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Other carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Drink carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Corrugated carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Meal carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Paper cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Disposable plastic cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Foam cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Food waste": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Metal lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Other plastic": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Tissues": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Wrapping paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Normal paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Paper bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic film": {
+      "precision": 0.07692307692307693,
+      "recall": 0.1,
+      "f1-score": 0.08695652173913043,
+      "support": 10.0
+    },
+    "Garbage bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic wrapper": {
+      "precision": 0.14285714285714285,
+      "recall": 0.1,
+      "f1-score": 0.11764705882352941,
+      "support": 10.0
+    },
+    "Single-use carrier bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Crisp packet": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Spread tub": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Disposable food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Foam food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic glooves": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic utensils": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Pop tab": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Rope & strings": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Scrap metal": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Squeezable tube": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic straw": {
+      "precision": 0.1111111111111111,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.13333333333333333,
+      "support": 6.0
+    },
+    "Styrofoam piece": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Unlabeled litter": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Cigarette": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "accuracy": 0.02643171806167401,
+    "macro avg": {
+      "precision": 0.02049174370602942,
+      "recall": 0.018055555555555554,
+      "f1-score": 0.017401576352983,
+      "support": 227.0
+    },
+    "weighted avg": {
+      "precision": 0.03176082361104387,
+      "recall": 0.02643171806167401,
+      "f1-score": 0.026483226305212177,
+      "support": 227.0
+    }
+  },
+  "rf": {
+    "Aluminium foil": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic bottle": {
+      "precision": 0.2,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.18181818181818182,
+      "support": 6.0
+    },
+    "Clear plastic bottle": {
+      "precision": 0.08333333333333333,
+      "recall": 0.1,
+      "f1-score": 0.09090909090909091,
+      "support": 10.0
+    },
+    "Glass bottle": {
+      "precision": 0.125,
+      "recall": 0.1,
+      "f1-score": 0.1111111111111111,
+      "support": 10.0
+    },
+    "Plastic bottle cap": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Metal bottle cap": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 8.0
+    },
+    "Broken glass": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Aerosol": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Drink can": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Other carton": {
+      "precision": 0.1,
+      "recall": 0.14285714285714285,
+      "f1-score": 0.11764705882352941,
+      "support": 7.0
+    },
+    "Drink carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Corrugated carton": {
+      "precision": 0.1,
+      "recall": 0.2,
+      "f1-score": 0.13333333333333333,
+      "support": 5.0
+    },
+    "Meal carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Paper cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Disposable plastic cup": {
+      "precision": 0.09090909090909091,
+      "recall": 0.1111111111111111,
+      "f1-score": 0.1,
+      "support": 9.0
+    },
+    "Foam cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Food waste": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Metal lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Other plastic": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Tissues": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Wrapping paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Normal paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Paper bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic film": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Garbage bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic wrapper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Single-use carrier bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Crisp packet": {
+      "precision": 0.3333333333333333,
+      "recall": 0.14285714285714285,
+      "f1-score": 0.2,
+      "support": 7.0
+    },
+    "Spread tub": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Disposable food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Foam food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic glooves": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic utensils": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Pop tab": {
+      "precision": 0.18181818181818182,
+      "recall": 0.4,
+      "f1-score": 0.25,
+      "support": 5.0
+    },
+    "Rope & strings": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Scrap metal": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Squeezable tube": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic straw": {
+      "precision": 0.1111111111111111,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.13333333333333333,
+      "support": 6.0
+    },
+    "Styrofoam piece": {
+      "precision": 0.25,
+      "recall": 0.14285714285714285,
+      "f1-score": 0.18181818181818182,
+      "support": 7.0
+    },
+    "Unlabeled litter": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Cigarette": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "accuracy": 0.048458149779735685,
+    "macro avg": {
+      "precision": 0.03751202501202501,
+      "recall": 0.03983371126228269,
+      "f1-score": 0.03571357836063719,
+      "support": 227.0
+    },
+    "weighted avg": {
+      "precision": 0.048284608196502474,
+      "recall": 0.048458149779735685,
+      "f1-score": 0.04503979939325884,
+      "support": 227.0
+    }
+  },
+  "extra_trees": {
+    "Aluminium foil": {
+      "precision": 0.05,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.07692307692307693,
+      "support": 6.0
+    },
+    "Other plastic bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Clear plastic bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Glass bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Plastic bottle cap": {
+      "precision": 0.21428571428571427,
+      "recall": 0.3,
+      "f1-score": 0.25,
+      "support": 10.0
+    },
+    "Metal bottle cap": {
+      "precision": 0.18181818181818182,
+      "recall": 0.25,
+      "f1-score": 0.21052631578947367,
+      "support": 8.0
+    },
+    "Broken glass": {
+      "precision": 0.0625,
+      "recall": 1.0,
+      "f1-score": 0.11764705882352941,
+      "support": 1.0
+    },
+    "Aerosol": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Drink can": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Other carton": {
+      "precision": 0.2857142857142857,
+      "recall": 0.2857142857142857,
+      "f1-score": 0.2857142857142857,
+      "support": 7.0
+    },
+    "Drink carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Corrugated carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Meal carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Paper cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Disposable plastic cup": {
+      "precision": 0.125,
+      "recall": 0.1111111111111111,
+      "f1-score": 0.11764705882352941,
+      "support": 9.0
+    },
+    "Foam cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Food waste": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Metal lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Other plastic": {
+      "precision": 0.1,
+      "recall": 0.1,
+      "f1-score": 0.1,
+      "support": 10.0
+    },
+    "Tissues": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Wrapping paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Normal paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Paper bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic film": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Garbage bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic wrapper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Single-use carrier bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Crisp packet": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Spread tub": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Disposable food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Foam food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic glooves": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic utensils": {
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1-score": 0.3333333333333333,
+      "support": 2.0
+    },
+    "Pop tab": {
+      "precision": 0.14285714285714285,
+      "recall": 0.4,
+      "f1-score": 0.21052631578947367,
+      "support": 5.0
+    },
+    "Rope & strings": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Scrap metal": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Squeezable tube": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic straw": {
+      "precision": 0.125,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.14285714285714285,
+      "support": 6.0
+    },
+    "Styrofoam piece": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Unlabeled litter": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Cigarette": {
+      "precision": 0.08333333333333333,
+      "recall": 0.1,
+      "f1-score": 0.09090909090909091,
+      "support": 10.0
+    },
+    "accuracy": 0.07048458149779736,
+    "macro avg": {
+      "precision": 0.038583539476396624,
+      "recall": 0.08047996976568406,
+      "f1-score": 0.046097230451498473,
+      "support": 227.0
+    },
+    "weighted avg": {
+      "precision": 0.047940623986879496,
+      "recall": 0.07048458149779736,
+      "f1-score": 0.05421916999091342,
+      "support": 227.0
+    }
+  },
+  "xgboost": {
+    "Aluminium foil": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic bottle": {
+      "precision": 0.14285714285714285,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.15384615384615385,
+      "support": 6.0
+    },
+    "Clear plastic bottle": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Glass bottle": {
+      "precision": 0.16666666666666666,
+      "recall": 0.1,
+      "f1-score": 0.125,
+      "support": 10.0
+    },
+    "Plastic bottle cap": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Metal bottle cap": {
+      "precision": 0.2,
+      "recall": 0.25,
+      "f1-score": 0.2222222222222222,
+      "support": 8.0
+    },
+    "Broken glass": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Aerosol": {
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1-score": 0.3333333333333333,
+      "support": 2.0
+    },
+    "Drink can": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Other carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Drink carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "Corrugated carton": {
+      "precision": 0.2,
+      "recall": 0.2,
+      "f1-score": 0.2,
+      "support": 5.0
+    },
+    "Meal carton": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Paper cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Disposable plastic cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Foam cup": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Food waste": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Metal lid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Other plastic": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Tissues": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Wrapping paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Normal paper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 9.0
+    },
+    "Paper bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic film": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Garbage bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "Other plastic wrapper": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Single-use carrier bag": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 3.0
+    },
+    "Crisp packet": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Spread tub": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Disposable food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Foam food container": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic glooves": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic utensils": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Pop tab": {
+      "precision": 0.16666666666666666,
+      "recall": 0.4,
+      "f1-score": 0.23529411764705882,
+      "support": 5.0
+    },
+    "Rope & strings": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 2.0
+    },
+    "Scrap metal": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "Squeezable tube": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Plastic straw": {
+      "precision": 0.07142857142857142,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.1,
+      "support": 6.0
+    },
+    "Styrofoam piece": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 7.0
+    },
+    "Unlabeled litter": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Cigarette": {
+      "precision": 0.11764705882352941,
+      "recall": 0.2,
+      "f1-score": 0.14814814814814814,
+      "support": 10.0
+    },
+    "accuracy": 0.048458149779735685,
+    "macro avg": {
+      "precision": 0.03131585967720422,
+      "recall": 0.04722222222222222,
+      "f1-score": 0.03613914226659325,
+      "support": 227.0
+    },
+    "weighted avg": {
+      "precision": 0.035516232924888015,
+      "recall": 0.048458149779735685,
+      "f1-score": 0.03909900192615923,
+      "support": 227.0
+    }
+  }
+}

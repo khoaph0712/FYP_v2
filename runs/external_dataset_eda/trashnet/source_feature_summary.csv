@@ -1,0 +1,7 @@
+source,sampled_objects,top_feature_1,top_feature_2,top_feature_3,spatial_mean_abs,frequency_mean_abs,color_mean_abs,hog_mean_abs
+paper,594,grad_mean,grad_std,p10_intensity,110.10743,0.114573,22.307087,0.127269
+glass,501,p10_intensity,h_mean,grad_std,107.463699,0.112873,23.293676,0.12323
+plastic,482,h_mean,p10_intensity,grad_std,103.400314,0.113412,22.543737,0.127788
+metal,410,p10_intensity,p50_intensity,h_mean,106.93705,0.113819,23.153908,0.124101
+cardboard,403,grad_std,s_mean,b_mean,99.078331,0.114057,21.957211,0.131658
+trash,137,grad_std,p10_intensity,p50_intensity,103.914818,0.113624,21.705723,0.126853

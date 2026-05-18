@@ -1,0 +1,2 @@
+source,sampled_objects,top_feature_1,top_feature_2,top_feature_3,spatial_mean_abs,frequency_mean_abs,color_mean_abs,hog_mean_abs
+garbage,333,grad_mean,p90_intensity,s_mean,101.019272,0.121211,19.708876,0.153363

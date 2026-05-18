@@ -1,0 +1,3 @@
+class_id,class_name,n_objects,mean_intensity,std_intensity,p10_intensity,p50_intensity,p90_intensity,grad_mean,grad_std,edge_density
+0,background,400,125.527168,48.184174,64.983749,123.665001,188.558746,109.679962,109.542274,0.203709
+1,garbage,265,116.885399,49.820393,53.449055,114.18679,184.77359,146.836456,119.280838,0.295152

@@ -1,0 +1,201 @@
+{
+  "train": {
+    "Aluminium foil": 30,
+    "Other plastic bottle": 30,
+    "Clear plastic bottle": 30,
+    "Glass bottle": 30,
+    "Plastic bottle cap": 30,
+    "Metal bottle cap": 30,
+    "Broken glass": 30,
+    "Aerosol": 6,
+    "Drink can": 30,
+    "Other carton": 30,
+    "Drink carton": 30,
+    "Corrugated carton": 30,
+    "Meal carton": 21,
+    "Paper cup": 30,
+    "Disposable plastic cup": 30,
+    "Foam cup": 8,
+    "Food waste": 5,
+    "Plastic lid": 30,
+    "Metal lid": 2,
+    "Other plastic": 30,
+    "Tissues": 28,
+    "Wrapping paper": 10,
+    "Normal paper": 30,
+    "Paper bag": 20,
+    "Plastic film": 30,
+    "Garbage bag": 23,
+    "Other plastic wrapper": 30,
+    "Single-use carrier bag": 30,
+    "Crisp packet": 28,
+    "Spread tub": 6,
+    "Disposable food container": 21,
+    "Foam food container": 11,
+    "Plastic glooves": 3,
+    "Plastic utensils": 26,
+    "Pop tab": 30,
+    "Rope & strings": 24,
+    "Scrap metal": 13,
+    "Squeezable tube": 6,
+    "Plastic straw": 30,
+    "Styrofoam piece": 30,
+    "Unlabeled litter": 30,
+    "Cigarette": 30
+  },
+  "test": {
+    "Aluminium foil": 6,
+    "Other plastic bottle": 6,
+    "Clear plastic bottle": 10,
+    "Glass bottle": 10,
+    "Plastic bottle cap": 10,
+    "Metal bottle cap": 8,
+    "Broken glass": 1,
+    "Aerosol": 2,
+    "Drink can": 10,
+    "Other carton": 7,
+    "Drink carton": 5,
+    "Corrugated carton": 5,
+    "Meal carton": 2,
+    "Paper cup": 9,
+    "Disposable plastic cup": 9,
+    "Foam cup": 1,
+    "Food waste": 1,
+    "Plastic lid": 4,
+    "Metal lid": 3,
+    "Other plastic": 10,
+    "Tissues": 7,
+    "Wrapping paper": 1,
+    "Normal paper": 9,
+    "Paper bag": 1,
+    "Plastic film": 10,
+    "Garbage bag": 6,
+    "Other plastic wrapper": 10,
+    "Single-use carrier bag": 3,
+    "Crisp packet": 7,
+    "Spread tub": 1,
+    "Disposable food container": 4,
+    "Foam food container": 1,
+    "Plastic glooves": 1,
+    "Plastic utensils": 2,
+    "Pop tab": 5,
+    "Rope & strings": 2,
+    "Scrap metal": 4,
+    "Squeezable tube": 1,
+    "Plastic straw": 6,
+    "Styrofoam piece": 7,
+    "Unlabeled litter": 10,
+    "Cigarette": 10
+  },
+  "dropped_unsupported_classes": [
+    {
+      "class_id": 1,
+      "class_name": "Battery",
+      "train_count": 2,
+      "test_count": 0
+    },
+    {
+      "class_id": 2,
+      "class_name": "Aluminium blister pack",
+      "train_count": 3,
+      "test_count": 0
+    },
+    {
+      "class_id": 3,
+      "class_name": "Carded blister pack",
+      "train_count": 1,
+      "test_count": 0
+    },
+    {
+      "class_id": 10,
+      "class_name": "Food Can",
+      "train_count": 30,
+      "test_count": 0
+    },
+    {
+      "class_id": 13,
+      "class_name": "Toilet tube",
+      "train_count": 5,
+      "test_count": 0
+    },
+    {
+      "class_id": 15,
+      "class_name": "Egg carton",
+      "train_count": 10,
+      "test_count": 0
+    },
+    {
+      "class_id": 19,
+      "class_name": "Pizza box",
+      "train_count": 3,
+      "test_count": 0
+    },
+    {
+      "class_id": 23,
+      "class_name": "Glass cup",
+      "train_count": 5,
+      "test_count": 0
+    },
+    {
+      "class_id": 24,
+      "class_name": "Other plastic cup",
+      "train_count": 2,
+      "test_count": 0
+    },
+    {
+      "class_id": 26,
+      "class_name": "Glass jar",
+      "train_count": 1,
+      "test_count": 0
+    },
+    {
+      "class_id": 30,
+      "class_name": "Magazine paper",
+      "train_count": 5,
+      "test_count": 0
+    },
+    {
+      "class_id": 35,
+      "class_name": "Plastified paper bag",
+      "train_count": 0,
+      "test_count": 0
+    },
+    {
+      "class_id": 37,
+      "class_name": "Six pack rings",
+      "train_count": 5,
+      "test_count": 0
+    },
+    {
+      "class_id": 41,
+      "class_name": "Polypropylene bag",
+      "train_count": 3,
+      "test_count": 0
+    },
+    {
+      "class_id": 44,
+      "class_name": "Tupperware",
+      "train_count": 3,
+      "test_count": 0
+    },
+    {
+      "class_id": 47,
+      "class_name": "Other plastic container",
+      "train_count": 5,
+      "test_count": 0
+    },
+    {
+      "class_id": 53,
+      "class_name": "Shoe",
+      "train_count": 6,
+      "test_count": 0
+    },
+    {
+      "class_id": 56,
+      "class_name": "Paper straw",
+      "train_count": 2,
+      "test_count": 0
+    }
+  ],
+  "note": "Classes without both train and test support were removed for this ML run and remaining labels were remapped to 0..K-1."
+}

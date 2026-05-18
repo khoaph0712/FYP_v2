@@ -1,0 +1,32 @@
+[
+  {
+    "model": "xgboost",
+    "accuracy": 0.6496551724137931,
+    "f1_macro": 0.642177427891755
+  },
+  {
+    "model": "extra_trees",
+    "accuracy": 0.6110344827586207,
+    "f1_macro": 0.6030880222110154
+  },
+  {
+    "model": "rf",
+    "accuracy": 0.5917241379310345,
+    "f1_macro": 0.5813682164512876
+  },
+  {
+    "model": "linear_svm",
+    "accuracy": 0.5351724137931034,
+    "f1_macro": 0.5261862368867704
+  },
+  {
+    "model": "logreg",
+    "accuracy": 0.523448275862069,
+    "f1_macro": 0.5161079017067776
+  },
+  {
+    "model": "decision_tree",
+    "accuracy": 0.4303448275862069,
+    "f1_macro": 0.42528206837028387
+  }
+]

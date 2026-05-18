@@ -32,12 +32,14 @@ Current evidence to report honestly:
 
 | System | Metric | Result |
 |---|---|---:|
-| Classical ML best model | Accuracy | 0.6312 |
-| Classical ML best model | F1-macro | 0.6113 |
+| Lecturer ML best model (`xgboost`) | Accuracy | 0.6742 |
+| Lecturer ML best model (`xgboost`) | F1-macro | 0.6506 |
+| ANN baseline on tuned dataset | Accuracy | 0.4057 |
+| CNN baseline on tuned dataset | Accuracy | 0.4413 |
 | YOLOv8n detector | Test mAP@0.5 | 0.7559 |
 | YOLOv8n detector | Test mAP@0.5:0.95 | 0.5754 |
 
-Conclusion: classical ML is the explainable baseline required for analysis; YOLOv8n is the stronger practical detection/deployment model.
+Conclusion for the current lecturer checkpoint: explain the handcrafted features + classical ML first, show ANN/CNN baselines with saved logs, and keep YOLO as previous/final detector evidence unless asked.
 
 ## 2. Reproducible Pipeline
 
@@ -68,36 +70,65 @@ Expected output: class counts for train, valid, and test splits.
 ```powershell
 .\.venv311\Scripts\python.exe scripts\feature_ml_analysis.py `
   --data merged_dataset_v3\data.yaml `
-  --out runs\ml\feature_ml_enhanced_6class_4k `
+  --out runs\ml\feature_ml_lecturer_6class_4k `
   --exclude-classes other `
   --max-per-class-train 4000 `
-  --max-per-class-test 800
+  --max-per-class-test 800 `
+  --domain-out ml\frequency_analysis
 ```
 
-Expected output folder: `runs\ml\feature_ml_enhanced_6class_4k`
+Expected output folder: `runs\ml\feature_ml_lecturer_6class_4k`
 
 Important artifacts:
 
 - `REPORT.md`
 - `class_support.json`
 - `metrics_summary.json`
+- `classification_reports.json`
 - `chart_model_comparison.png`
 - `chart_domain_importance.png`
-- `confusion_extra_trees.png`
+- `confusion_decision_tree.png`
+- `confusion_linear_svm.png`
+- `confusion_rf.png`
+- `confusion_xgboost.png`
 
-### 2.3 Tiny CNN Baseline
+### 2.3 ANN/CNN Baselines
 
 ```powershell
-.\.venv311\Scripts\python.exe scripts\deep_learning_baseline.py --data merged_dataset_v3\data.yaml
+.\.venv311\Scripts\python.exe scripts\deep_learning_baseline.py `
+  --data merged_dataset_v3\data.yaml `
+  --out runs\dl\ann_cnn_merged_dataset_v3 `
+  --model both `
+  --max-train-objects 8000 `
+  --max-val-objects 2000 `
+  --max-test-objects 3000 `
+  --epochs 8
+
+.\.venv311\Scripts\python.exe scripts\deep_learning_baseline.py `
+  --data tuned_dataset_v1\data.yaml `
+  --out runs\dl\ann_cnn_tuned_dataset_v1 `
+  --model both `
+  --max-train-objects 8000 `
+  --max-val-objects 2000 `
+  --max-test-objects 3000 `
+  --epochs 8
 ```
 
-Expected output folder: `runs\dl\dl_baseline`
+Expected output folders:
+
+- `runs\dl\ann_cnn_merged_dataset_v3`
+- `runs\dl\ann_cnn_tuned_dataset_v1`
 
 Important artifacts:
 
-- `metrics.json`
-- `training_loss.png`
-- `confusion_tiny_cnn.png`
+- `metrics_summary.json`
+- `REPORT.md`
+- `ann\ann.pt`, `ann\ann_full.pt`
+- `cnn\cnn.pt`, `cnn\cnn_full.pt`
+- `training_log.csv` and `training_log.json`
+- `training_curves_ann.png` / `training_curves_cnn.png`
+- `confusion_ann.png` / `confusion_cnn.png`
+- `classification_report.json`
 
 ### 2.4 ML-vs-DL Comparison
 
@@ -203,19 +234,61 @@ The enhanced classical ML run uses 637 handcrafted features extracted from YOLO 
 
 Models trained on extracted features:
 
-- Logistic Regression
+- Decision Tree
 - Linear SVM
 - Random Forest
+- XGBoost
+- Logistic Regression
 - Extra Trees
 
 Model comparison:
 
 | Model | Accuracy | F1-macro |
 |---|---:|---:|
+| xgboost | 0.6742 | 0.6506 |
 | extra_trees | 0.6312 | 0.6113 |
 | rf | 0.6317 | 0.6111 |
 | linear_svm | 0.5960 | 0.5642 |
 | logreg | 0.5864 | 0.5558 |
+| decision_tree | 0.5115 | 0.4883 |
+
+Why 637 features:
+
+- `8` spatial features describe intensity, gradients, and edges.
+- `9` frequency/FFT features describe radial frequency energy and high-frequency texture.
+- `44` color features describe HSV histograms plus BGR/HSV mean and standard deviation.
+- `576` HOG features describe local gradient orientation/shape.
+- Total: `8 + 9 + 44 + 576 = 637`.
+
+## 4. ANN/CNN Baseline Results
+
+YOLO is paused for this checkpoint. ANN/CNN are trained as image-crop classifiers to satisfy the deep-learning baseline requirement.
+
+| Dataset | Model | Test Accuracy | Test F1-macro | Best Val Accuracy |
+|---|---|---:|---:|---:|
+| `merged_dataset_v3` | ANN | 0.3507 | 0.3278 | 0.3890 |
+| `merged_dataset_v3` | CNN | 0.4730 | 0.4144 | 0.4195 |
+| `tuned_dataset_v1` | ANN | 0.4057 | 0.3885 | 0.4245 |
+| `tuned_dataset_v1` | CNN | 0.4413 | 0.4138 | 0.4730 |
+
+Saved output evidence:
+
+- `runs\dl\ann_cnn_merged_dataset_v3\REPORT.md`
+- `runs\dl\ann_cnn_tuned_dataset_v1\REPORT.md`
+- saved models: `ann.pt`, `ann_full.pt`, `cnn.pt`, `cnn_full.pt`
+- logs: `training_log.csv`, `training_log.json`
+- figures: train/val loss + accuracy curves, confusion matrices
+- reports: `classification_report.json`
+
+## 5. Confusion Matrix Background Explanation
+
+For ANN/CNN crop classification, there is no `background` class because every crop is already assigned to one dataset class.
+
+For YOLO detection confusion matrices, `background` is not an eighth trash category. It represents detection matching errors:
+
+- True class to background: a real object was missed.
+- Background to predicted class: the detector predicted an object where no ground-truth box matched.
+- Normal class-to-class cells: the detector found an object but predicted the wrong class.
 
 Feature-group importance from Random Forest:
 

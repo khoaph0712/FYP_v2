@@ -1,0 +1,3 @@
+class_id,class_name,n_objects,fft_bin_1,fft_bin_2,fft_bin_3,fft_bin_4,fft_bin_5,fft_bin_6,fft_bin_7,fft_bin_8,high_freq_energy
+0,background,400,0.67122,0.144255,0.069225,0.048349,0.035814,0.023641,0.006128,0.001358,0.066942
+1,garbage,265,0.587555,0.181378,0.092595,0.061118,0.041053,0.027701,0.006959,0.001631,0.077344

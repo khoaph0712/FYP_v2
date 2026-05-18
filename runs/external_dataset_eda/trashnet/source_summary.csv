@@ -1,0 +1,7 @@
+source,train_images,valid_images,test_images,total_images,train_objects,valid_objects,test_objects,total_objects,classes_present,imbalance_ratio_total,median_box_area_ratio,median_boxes_per_image,objects_cardboard,objects_glass,objects_metal,objects_paper,objects_plastic,objects_trash
+paper,475,59,60,594,475,59,60,594,1,1.0,1.0,1.0,0,0,0,594,0,0
+glass,401,50,50,501,401,50,50,501,1,1.0,1.0,1.0,0,501,0,0,0,0
+plastic,386,48,48,482,386,48,48,482,1,1.0,1.0,1.0,0,0,0,0,482,0
+metal,328,41,41,410,328,41,41,410,1,1.0,1.0,1.0,0,0,410,0,0,0
+cardboard,322,40,41,403,322,40,41,403,1,1.0,1.0,1.0,403,0,0,0,0,0
+trash,110,14,13,137,110,14,13,137,1,1.0,1.0,1.0,0,0,0,0,0,137

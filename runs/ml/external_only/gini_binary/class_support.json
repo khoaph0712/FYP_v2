@@ -1,0 +1,11 @@
+{
+  "train": {
+    "background": 400,
+    "garbage": 265
+  },
+  "test": {
+    "background": 94,
+    "garbage": 35
+  },
+  "dropped_unsupported_classes": []
+}

@@ -1,0 +1,2244 @@
+[
+  {
+    "class_id": 2,
+    "class_name": "Aluminium blister pack",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      56
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "s_mean"
+    ],
+    "distinctiveness_score": 55.28303909301758,
+    "spatial_top_indices": [
+      5,
+      6,
+      4
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 53.517364501953125,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.01775936968624592,
+    "lecture_comment": "Compared to the dataset average, **Aluminium blister pack** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p90_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 52,
+    "class_name": "Scrap metal",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      2
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "distinctiveness_score": 48.61455154418945,
+    "spatial_top_indices": [
+      5,
+      6,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 48.61455154418945,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.10900271683931351,
+    "lecture_comment": "Compared to the dataset average, **Scrap metal** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p10_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 1,
+    "class_name": "Battery",
+    "most_distinct_feature_indices": [
+      6,
+      4,
+      5
+    ],
+    "most_distinct_feature_names": [
+      "grad_std",
+      "p90_intensity",
+      "grad_mean"
+    ],
+    "distinctiveness_score": 46.28696823120117,
+    "spatial_top_indices": [
+      6,
+      4,
+      5
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p90_intensity",
+      "grad_mean"
+    ],
+    "spatial_distinctiveness": 46.28696823120117,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.05314544960856438,
+    "lecture_comment": "Compared to the dataset average, **Battery** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p90_intensity, grad_mean`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 28,
+    "class_name": "Metal lid",
+    "most_distinct_feature_indices": [
+      49,
+      4,
+      50
+    ],
+    "most_distinct_feature_names": [
+      "b_mean",
+      "p90_intensity",
+      "g_mean"
+    ],
+    "distinctiveness_score": 43.83635330200195,
+    "spatial_top_indices": [
+      4,
+      0,
+      3
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "mean_intensity",
+      "p50_intensity"
+    ],
+    "spatial_distinctiveness": 38.7740592956543,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.05638253688812256,
+    "lecture_comment": "Compared to the dataset average, **Metal lid** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, mean_intensity, p50_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 9,
+    "class_name": "Broken glass",
+    "most_distinct_feature_indices": [
+      4,
+      3,
+      57
+    ],
+    "most_distinct_feature_names": [
+      "p90_intensity",
+      "p50_intensity",
+      "v_mean"
+    ],
+    "distinctiveness_score": 43.57826614379883,
+    "spatial_top_indices": [
+      4,
+      3,
+      5
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "p50_intensity",
+      "grad_mean"
+    ],
+    "spatial_distinctiveness": 42.60908889770508,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.06321250647306442,
+    "lecture_comment": "Compared to the dataset average, **Broken glass** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, p50_intensity, grad_mean`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 26,
+    "class_name": "Glass jar",
+    "most_distinct_feature_indices": [
+      56,
+      49,
+      55
+    ],
+    "most_distinct_feature_names": [
+      "s_mean",
+      "b_mean",
+      "h_mean"
+    ],
+    "distinctiveness_score": 43.14445877075195,
+    "spatial_top_indices": [
+      2,
+      5,
+      1
+    ],
+    "spatial_top_names": [
+      "p10_intensity",
+      "grad_mean",
+      "std_intensity"
+    ],
+    "spatial_distinctiveness": 19.559003829956055,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.10132839530706406,
+    "lecture_comment": "Compared to the dataset average, **Glass jar** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p10_intensity, grad_mean, std_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 53,
+    "class_name": "Shoe",
+    "most_distinct_feature_indices": [
+      3,
+      57,
+      51
+    ],
+    "most_distinct_feature_names": [
+      "p50_intensity",
+      "v_mean",
+      "r_mean"
+    ],
+    "distinctiveness_score": 40.759586334228516,
+    "spatial_top_indices": [
+      3,
+      4,
+      0
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "p90_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 39.81975173950195,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.03664785996079445,
+    "lecture_comment": "Compared to the dataset average, **Shoe** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, p90_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 38,
+    "class_name": "Garbage bag",
+    "most_distinct_feature_indices": [
+      3,
+      57,
+      51
+    ],
+    "most_distinct_feature_names": [
+      "p50_intensity",
+      "v_mean",
+      "r_mean"
+    ],
+    "distinctiveness_score": 39.970584869384766,
+    "spatial_top_indices": [
+      3,
+      0,
+      4
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "mean_intensity",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 37.02919387817383,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.014289516024291515,
+    "lecture_comment": "Compared to the dataset average, **Garbage bag** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, mean_intensity, p90_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 13,
+    "class_name": "Toilet tube",
+    "most_distinct_feature_indices": [
+      5,
+      55,
+      58
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "h_mean",
+      "h_std"
+    ],
+    "distinctiveness_score": 35.26619338989258,
+    "spatial_top_indices": [
+      5,
+      6,
+      4
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 26.55021858215332,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.08248499780893326,
+    "lecture_comment": "Compared to the dataset average, **Toilet tube** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p90_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 3,
+    "class_name": "Carded blister pack",
+    "most_distinct_feature_indices": [
+      55,
+      5,
+      58
+    ],
+    "most_distinct_feature_names": [
+      "h_mean",
+      "grad_mean",
+      "h_std"
+    ],
+    "distinctiveness_score": 32.764034271240234,
+    "spatial_top_indices": [
+      5,
+      4,
+      6
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p90_intensity",
+      "grad_std"
+    ],
+    "spatial_distinctiveness": 28.41663360595703,
+    "frequency_top_indices": [
+      1,
+      0,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_2",
+      "fft_bin_1",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.026715906336903572,
+    "lecture_comment": "Compared to the dataset average, **Carded blister pack** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p90_intensity, grad_std`; strongest frequency shifts involve `fft_bin_2, fft_bin_1, fft_bin_3`."
+  },
+  {
+    "class_id": 23,
+    "class_name": "Glass cup",
+    "most_distinct_feature_indices": [
+      55,
+      51,
+      57
+    ],
+    "most_distinct_feature_names": [
+      "h_mean",
+      "r_mean",
+      "v_mean"
+    ],
+    "distinctiveness_score": 31.814773559570312,
+    "spatial_top_indices": [
+      2,
+      0,
+      4
+    ],
+    "spatial_top_names": [
+      "p10_intensity",
+      "mean_intensity",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 14.922523498535156,
+    "frequency_top_indices": [
+      0,
+      8,
+      1
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_2"
+    ],
+    "frequency_distinctiveness": 0.011132306419312954,
+    "lecture_comment": "Compared to the dataset average, **Glass cup** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p10_intensity, mean_intensity, p90_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_2`."
+  },
+  {
+    "class_id": 48,
+    "class_name": "Plastic glooves",
+    "most_distinct_feature_indices": [
+      5,
+      56,
+      55
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "s_mean",
+      "h_mean"
+    ],
+    "distinctiveness_score": 31.09087371826172,
+    "spatial_top_indices": [
+      5,
+      2,
+      3
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p10_intensity",
+      "p50_intensity"
+    ],
+    "spatial_distinctiveness": 28.05327033996582,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.173167422413826,
+    "lecture_comment": "Compared to the dataset average, **Plastic glooves** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p10_intensity, p50_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 44,
+    "class_name": "Tupperware",
+    "most_distinct_feature_indices": [
+      5,
+      4,
+      6
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "p90_intensity",
+      "grad_std"
+    ],
+    "distinctiveness_score": 29.09185218811035,
+    "spatial_top_indices": [
+      5,
+      4,
+      6
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p90_intensity",
+      "grad_std"
+    ],
+    "spatial_distinctiveness": 29.09185218811035,
+    "frequency_top_indices": [
+      0,
+      2,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_3",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.031053736805915833,
+    "lecture_comment": "Compared to the dataset average, **Tupperware** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p90_intensity, grad_std`; strongest frequency shifts involve `fft_bin_1, fft_bin_3, fft_bin_4`."
+  },
+  {
+    "class_id": 22,
+    "class_name": "Foam cup",
+    "most_distinct_feature_indices": [
+      3,
+      49,
+      4
+    ],
+    "most_distinct_feature_names": [
+      "p50_intensity",
+      "b_mean",
+      "p90_intensity"
+    ],
+    "distinctiveness_score": 28.232419967651367,
+    "spatial_top_indices": [
+      3,
+      4,
+      0
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "p90_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 25.23114013671875,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.04767289757728577,
+    "lecture_comment": "Compared to the dataset average, **Foam cup** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, p90_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 47,
+    "class_name": "Other plastic container",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      4
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "p90_intensity"
+    ],
+    "distinctiveness_score": 28.00316619873047,
+    "spatial_top_indices": [
+      5,
+      6,
+      4
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 28.00316619873047,
+    "frequency_top_indices": [
+      0,
+      2,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_3",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.02239767648279667,
+    "lecture_comment": "Compared to the dataset average, **Other plastic container** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p90_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_3, fft_bin_4`."
+  },
+  {
+    "class_id": 56,
+    "class_name": "Paper straw",
+    "most_distinct_feature_indices": [
+      6,
+      5,
+      58
+    ],
+    "most_distinct_feature_names": [
+      "grad_std",
+      "grad_mean",
+      "h_std"
+    ],
+    "distinctiveness_score": 27.478727340698242,
+    "spatial_top_indices": [
+      6,
+      5,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "grad_mean",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 27.470571517944336,
+    "frequency_top_indices": [
+      1,
+      0,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_2",
+      "fft_bin_1",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.06090639904141426,
+    "lecture_comment": "Compared to the dataset average, **Paper straw** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, grad_mean, p10_intensity`; strongest frequency shifts involve `fft_bin_2, fft_bin_1, high_freq_energy`."
+  },
+  {
+    "class_id": 24,
+    "class_name": "Other plastic cup",
+    "most_distinct_feature_indices": [
+      55,
+      6,
+      56
+    ],
+    "most_distinct_feature_names": [
+      "h_mean",
+      "grad_std",
+      "s_mean"
+    ],
+    "distinctiveness_score": 27.30467987060547,
+    "spatial_top_indices": [
+      6,
+      2,
+      1
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p10_intensity",
+      "std_intensity"
+    ],
+    "spatial_distinctiveness": 11.93490219116211,
+    "frequency_top_indices": [
+      1,
+      0,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_2",
+      "fft_bin_1",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.046858880668878555,
+    "lecture_comment": "Compared to the dataset average, **Other plastic cup** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p10_intensity, std_intensity`; strongest frequency shifts involve `fft_bin_2, fft_bin_1, high_freq_energy`."
+  },
+  {
+    "class_id": 12,
+    "class_name": "Drink can",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      2
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "distinctiveness_score": 26.536535263061523,
+    "spatial_top_indices": [
+      5,
+      6,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 26.536535263061523,
+    "frequency_top_indices": [
+      0,
+      2,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_3",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.007624763995409012,
+    "lecture_comment": "Compared to the dataset average, **Drink can** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p10_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_3, fft_bin_4`."
+  },
+  {
+    "class_id": 41,
+    "class_name": "Polypropylene bag",
+    "most_distinct_feature_indices": [
+      51,
+      56,
+      6
+    ],
+    "most_distinct_feature_names": [
+      "r_mean",
+      "s_mean",
+      "grad_std"
+    ],
+    "distinctiveness_score": 24.705156326293945,
+    "spatial_top_indices": [
+      6,
+      2,
+      3
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p10_intensity",
+      "p50_intensity"
+    ],
+    "spatial_distinctiveness": 16.26683235168457,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.04386967420578003,
+    "lecture_comment": "Compared to the dataset average, **Polypropylene bag** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p10_intensity, p50_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 25,
+    "class_name": "Food waste",
+    "most_distinct_feature_indices": [
+      56,
+      49,
+      58
+    ],
+    "most_distinct_feature_names": [
+      "s_mean",
+      "b_mean",
+      "h_std"
+    ],
+    "distinctiveness_score": 24.427576065063477,
+    "spatial_top_indices": [
+      5,
+      2,
+      3
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p10_intensity",
+      "p50_intensity"
+    ],
+    "spatial_distinctiveness": 13.932942390441895,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.06200597807765007,
+    "lecture_comment": "Compared to the dataset average, **Food waste** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p10_intensity, p50_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 30,
+    "class_name": "Magazine paper",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      2
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "distinctiveness_score": 24.22270965576172,
+    "spatial_top_indices": [
+      5,
+      6,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 24.22270965576172,
+    "frequency_top_indices": [
+      0,
+      8,
+      1
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_2"
+    ],
+    "frequency_distinctiveness": 0.11629700660705566,
+    "lecture_comment": "Compared to the dataset average, **Magazine paper** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p10_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_2`."
+  },
+  {
+    "class_id": 15,
+    "class_name": "Egg carton",
+    "most_distinct_feature_indices": [
+      56,
+      55,
+      4
+    ],
+    "most_distinct_feature_names": [
+      "s_mean",
+      "h_mean",
+      "p90_intensity"
+    ],
+    "distinctiveness_score": 23.527494430541992,
+    "spatial_top_indices": [
+      4,
+      5,
+      3
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "grad_mean",
+      "p50_intensity"
+    ],
+    "spatial_distinctiveness": 19.110305786132812,
+    "frequency_top_indices": [
+      0,
+      8,
+      1
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_2"
+    ],
+    "frequency_distinctiveness": 0.016703424975275993,
+    "lecture_comment": "Compared to the dataset average, **Egg carton** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, grad_mean, p50_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_2`."
+  },
+  {
+    "class_id": 46,
+    "class_name": "Foam food container",
+    "most_distinct_feature_indices": [
+      6,
+      3,
+      4
+    ],
+    "most_distinct_feature_names": [
+      "grad_std",
+      "p50_intensity",
+      "p90_intensity"
+    ],
+    "distinctiveness_score": 23.29322052001953,
+    "spatial_top_indices": [
+      6,
+      3,
+      4
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p50_intensity",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 23.29322052001953,
+    "frequency_top_indices": [
+      0,
+      2,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_3",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.012678735889494419,
+    "lecture_comment": "Compared to the dataset average, **Foam food container** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p50_intensity, p90_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_3, high_freq_energy`."
+  },
+  {
+    "class_id": 59,
+    "class_name": "Cigarette",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      2
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "distinctiveness_score": 22.43919563293457,
+    "spatial_top_indices": [
+      5,
+      6,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 22.43919563293457,
+    "frequency_top_indices": [
+      0,
+      2,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_3",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.05011357367038727,
+    "lecture_comment": "Compared to the dataset average, **Cigarette** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p10_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_3, high_freq_energy`."
+  },
+  {
+    "class_id": 10,
+    "class_name": "Food Can",
+    "most_distinct_feature_indices": [
+      49,
+      55,
+      56
+    ],
+    "most_distinct_feature_names": [
+      "b_mean",
+      "h_mean",
+      "s_mean"
+    ],
+    "distinctiveness_score": 22.357446670532227,
+    "spatial_top_indices": [
+      2,
+      3,
+      0
+    ],
+    "spatial_top_names": [
+      "p10_intensity",
+      "p50_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 12.279358863830566,
+    "frequency_top_indices": [
+      0,
+      8,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.005228897091001272,
+    "lecture_comment": "Compared to the dataset average, **Food Can** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p10_intensity, p50_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_3`."
+  },
+  {
+    "class_id": 18,
+    "class_name": "Meal carton",
+    "most_distinct_feature_indices": [
+      5,
+      4,
+      6
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "p90_intensity",
+      "grad_std"
+    ],
+    "distinctiveness_score": 21.43449592590332,
+    "spatial_top_indices": [
+      5,
+      4,
+      6
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p90_intensity",
+      "grad_std"
+    ],
+    "spatial_distinctiveness": 21.43449592590332,
+    "frequency_top_indices": [
+      0,
+      8,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.04723406955599785,
+    "lecture_comment": "Compared to the dataset average, **Meal carton** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p90_intensity, grad_std`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_3`."
+  },
+  {
+    "class_id": 11,
+    "class_name": "Aerosol",
+    "most_distinct_feature_indices": [
+      5,
+      55,
+      6
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "h_mean",
+      "grad_std"
+    ],
+    "distinctiveness_score": 20.69660758972168,
+    "spatial_top_indices": [
+      5,
+      6,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 17.940229415893555,
+    "frequency_top_indices": [
+      0,
+      2,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_3",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.023101113736629486,
+    "lecture_comment": "Compared to the dataset average, **Aerosol** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p10_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_3, fft_bin_4`."
+  },
+  {
+    "class_id": 37,
+    "class_name": "Six pack rings",
+    "most_distinct_feature_indices": [
+      55,
+      6,
+      2
+    ],
+    "most_distinct_feature_names": [
+      "h_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "distinctiveness_score": 20.589326858520508,
+    "spatial_top_indices": [
+      6,
+      2,
+      5
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p10_intensity",
+      "grad_mean"
+    ],
+    "spatial_distinctiveness": 17.152708053588867,
+    "frequency_top_indices": [
+      8,
+      1,
+      0
+    ],
+    "frequency_top_names": [
+      "high_freq_energy",
+      "fft_bin_2",
+      "fft_bin_1"
+    ],
+    "frequency_distinctiveness": 0.011558485217392445,
+    "lecture_comment": "Compared to the dataset average, **Six pack rings** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p10_intensity, grad_mean`; strongest frequency shifts involve `high_freq_energy, fft_bin_2, fft_bin_1`."
+  },
+  {
+    "class_id": 19,
+    "class_name": "Pizza box",
+    "most_distinct_feature_indices": [
+      55,
+      4,
+      49
+    ],
+    "most_distinct_feature_names": [
+      "h_mean",
+      "p90_intensity",
+      "b_mean"
+    ],
+    "distinctiveness_score": 19.322050094604492,
+    "spatial_top_indices": [
+      4,
+      2,
+      0
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "p10_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 13.83620834350586,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.03214303031563759,
+    "lecture_comment": "Compared to the dataset average, **Pizza box** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, p10_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 32,
+    "class_name": "Wrapping paper",
+    "most_distinct_feature_indices": [
+      5,
+      56,
+      49
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "s_mean",
+      "b_mean"
+    ],
+    "distinctiveness_score": 19.287372589111328,
+    "spatial_top_indices": [
+      5,
+      6,
+      4
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 17.121368408203125,
+    "frequency_top_indices": [
+      0,
+      8,
+      1
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_2"
+    ],
+    "frequency_distinctiveness": 0.008455655537545681,
+    "lecture_comment": "Compared to the dataset average, **Wrapping paper** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p90_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_2`."
+  },
+  {
+    "class_id": 6,
+    "class_name": "Glass bottle",
+    "most_distinct_feature_indices": [
+      3,
+      49,
+      50
+    ],
+    "most_distinct_feature_names": [
+      "p50_intensity",
+      "b_mean",
+      "g_mean"
+    ],
+    "distinctiveness_score": 18.485177993774414,
+    "spatial_top_indices": [
+      3,
+      0,
+      4
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "mean_intensity",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 16.81627655029297,
+    "frequency_top_indices": [
+      0,
+      8,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.023274561390280724,
+    "lecture_comment": "Compared to the dataset average, **Glass bottle** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, mean_intensity, p90_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_4`."
+  },
+  {
+    "class_id": 7,
+    "class_name": "Plastic bottle cap",
+    "most_distinct_feature_indices": [
+      5,
+      56,
+      6
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "s_mean",
+      "grad_std"
+    ],
+    "distinctiveness_score": 18.259248733520508,
+    "spatial_top_indices": [
+      5,
+      6,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 16.780759811401367,
+    "frequency_top_indices": [
+      0,
+      8,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.01889115385711193,
+    "lecture_comment": "Compared to the dataset average, **Plastic bottle cap** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p10_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_4`."
+  },
+  {
+    "class_id": 49,
+    "class_name": "Plastic utensils",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      4
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "p90_intensity"
+    ],
+    "distinctiveness_score": 18.19886589050293,
+    "spatial_top_indices": [
+      5,
+      6,
+      4
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p90_intensity"
+    ],
+    "spatial_distinctiveness": 18.19886589050293,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.01811624877154827,
+    "lecture_comment": "Compared to the dataset average, **Plastic utensils** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p90_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 42,
+    "class_name": "Crisp packet",
+    "most_distinct_feature_indices": [
+      4,
+      51,
+      57
+    ],
+    "most_distinct_feature_names": [
+      "p90_intensity",
+      "r_mean",
+      "v_mean"
+    ],
+    "distinctiveness_score": 17.88330078125,
+    "spatial_top_indices": [
+      4,
+      0,
+      2
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "mean_intensity",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 14.316128730773926,
+    "frequency_top_indices": [
+      1,
+      8,
+      5
+    ],
+    "frequency_top_names": [
+      "fft_bin_2",
+      "high_freq_energy",
+      "fft_bin_6"
+    ],
+    "frequency_distinctiveness": 0.011393997818231583,
+    "lecture_comment": "Compared to the dataset average, **Crisp packet** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, mean_intensity, p10_intensity`; strongest frequency shifts involve `fft_bin_2, high_freq_energy, fft_bin_6`."
+  },
+  {
+    "class_id": 20,
+    "class_name": "Paper cup",
+    "most_distinct_feature_indices": [
+      51,
+      57,
+      0
+    ],
+    "most_distinct_feature_names": [
+      "r_mean",
+      "v_mean",
+      "mean_intensity"
+    ],
+    "distinctiveness_score": 17.341171264648438,
+    "spatial_top_indices": [
+      0,
+      3,
+      2
+    ],
+    "spatial_top_names": [
+      "mean_intensity",
+      "p50_intensity",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 13.377177238464355,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.014893108047544956,
+    "lecture_comment": "Compared to the dataset average, **Paper cup** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `mean_intensity, p50_intensity, p10_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 57,
+    "class_name": "Styrofoam piece",
+    "most_distinct_feature_indices": [
+      56,
+      3,
+      4
+    ],
+    "most_distinct_feature_names": [
+      "s_mean",
+      "p50_intensity",
+      "p90_intensity"
+    ],
+    "distinctiveness_score": 15.801779747009277,
+    "spatial_top_indices": [
+      3,
+      4,
+      0
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "p90_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 14.06086254119873,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.019481105729937553,
+    "lecture_comment": "Compared to the dataset average, **Styrofoam piece** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, p90_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 39,
+    "class_name": "Other plastic wrapper",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      55
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "h_mean"
+    ],
+    "distinctiveness_score": 15.0701904296875,
+    "spatial_top_indices": [
+      5,
+      6,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 14.819073677062988,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.020181072875857353,
+    "lecture_comment": "Compared to the dataset average, **Other plastic wrapper** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p10_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 51,
+    "class_name": "Rope & strings",
+    "most_distinct_feature_indices": [
+      6,
+      4,
+      2
+    ],
+    "most_distinct_feature_names": [
+      "grad_std",
+      "p90_intensity",
+      "p10_intensity"
+    ],
+    "distinctiveness_score": 14.684224128723145,
+    "spatial_top_indices": [
+      6,
+      4,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p90_intensity",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 14.684224128723145,
+    "frequency_top_indices": [
+      0,
+      8,
+      1
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_2"
+    ],
+    "frequency_distinctiveness": 0.03740896284580231,
+    "lecture_comment": "Compared to the dataset average, **Rope & strings** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p90_intensity, p10_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_2`."
+  },
+  {
+    "class_id": 45,
+    "class_name": "Disposable food container",
+    "most_distinct_feature_indices": [
+      4,
+      57,
+      49
+    ],
+    "most_distinct_feature_names": [
+      "p90_intensity",
+      "v_mean",
+      "b_mean"
+    ],
+    "distinctiveness_score": 14.353306770324707,
+    "spatial_top_indices": [
+      4,
+      3,
+      0
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "p50_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 12.232124328613281,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.012511081993579865,
+    "lecture_comment": "Compared to the dataset average, **Disposable food container** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, p50_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 14,
+    "class_name": "Other carton",
+    "most_distinct_feature_indices": [
+      4,
+      49,
+      3
+    ],
+    "most_distinct_feature_names": [
+      "p90_intensity",
+      "b_mean",
+      "p50_intensity"
+    ],
+    "distinctiveness_score": 13.163189888000488,
+    "spatial_top_indices": [
+      4,
+      3,
+      5
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "p50_intensity",
+      "grad_mean"
+    ],
+    "spatial_distinctiveness": 12.539019584655762,
+    "frequency_top_indices": [
+      0,
+      8,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.008959556929767132,
+    "lecture_comment": "Compared to the dataset average, **Other carton** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, p50_intensity, grad_mean`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_4`."
+  },
+  {
+    "class_id": 43,
+    "class_name": "Spread tub",
+    "most_distinct_feature_indices": [
+      58,
+      56,
+      5
+    ],
+    "most_distinct_feature_names": [
+      "h_std",
+      "s_mean",
+      "grad_mean"
+    ],
+    "distinctiveness_score": 11.316650390625,
+    "spatial_top_indices": [
+      5,
+      4,
+      1
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p90_intensity",
+      "std_intensity"
+    ],
+    "spatial_distinctiveness": 7.800172328948975,
+    "frequency_top_indices": [
+      0,
+      8,
+      1
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_2"
+    ],
+    "frequency_distinctiveness": 0.0377279669046402,
+    "lecture_comment": "Compared to the dataset average, **Spread tub** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p90_intensity, std_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_2`."
+  },
+  {
+    "class_id": 5,
+    "class_name": "Clear plastic bottle",
+    "most_distinct_feature_indices": [
+      6,
+      2,
+      5
+    ],
+    "most_distinct_feature_names": [
+      "grad_std",
+      "p10_intensity",
+      "grad_mean"
+    ],
+    "distinctiveness_score": 11.278877258300781,
+    "spatial_top_indices": [
+      6,
+      2,
+      5
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p10_intensity",
+      "grad_mean"
+    ],
+    "spatial_distinctiveness": 11.278877258300781,
+    "frequency_top_indices": [
+      0,
+      8,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.02656617760658264,
+    "lecture_comment": "Compared to the dataset average, **Clear plastic bottle** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p10_intensity, grad_mean`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_4`."
+  },
+  {
+    "class_id": 54,
+    "class_name": "Squeezable tube",
+    "most_distinct_feature_indices": [
+      3,
+      6,
+      55
+    ],
+    "most_distinct_feature_names": [
+      "p50_intensity",
+      "grad_std",
+      "h_mean"
+    ],
+    "distinctiveness_score": 10.994858741760254,
+    "spatial_top_indices": [
+      3,
+      6,
+      0
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "grad_std",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 10.001202583312988,
+    "frequency_top_indices": [
+      0,
+      8,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.039525747299194336,
+    "lecture_comment": "Compared to the dataset average, **Squeezable tube** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, grad_std, mean_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_4`."
+  },
+  {
+    "class_id": 4,
+    "class_name": "Other plastic bottle",
+    "most_distinct_feature_indices": [
+      4,
+      6,
+      55
+    ],
+    "most_distinct_feature_names": [
+      "p90_intensity",
+      "grad_std",
+      "h_mean"
+    ],
+    "distinctiveness_score": 10.80419921875,
+    "spatial_top_indices": [
+      4,
+      6,
+      1
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "grad_std",
+      "std_intensity"
+    ],
+    "spatial_distinctiveness": 10.042216300964355,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.011568532325327396,
+    "lecture_comment": "Compared to the dataset average, **Other plastic bottle** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, grad_std, std_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 58,
+    "class_name": "Unlabeled litter",
+    "most_distinct_feature_indices": [
+      2,
+      49,
+      3
+    ],
+    "most_distinct_feature_names": [
+      "p10_intensity",
+      "b_mean",
+      "p50_intensity"
+    ],
+    "distinctiveness_score": 10.68885326385498,
+    "spatial_top_indices": [
+      2,
+      3,
+      0
+    ],
+    "spatial_top_names": [
+      "p10_intensity",
+      "p50_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 10.049468994140625,
+    "frequency_top_indices": [
+      0,
+      8,
+      4
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_5"
+    ],
+    "frequency_distinctiveness": 0.010267511010169983,
+    "lecture_comment": "Compared to the dataset average, **Unlabeled litter** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p10_intensity, p50_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_5`."
+  },
+  {
+    "class_id": 27,
+    "class_name": "Plastic lid",
+    "most_distinct_feature_indices": [
+      2,
+      5,
+      3
+    ],
+    "most_distinct_feature_names": [
+      "p10_intensity",
+      "grad_mean",
+      "p50_intensity"
+    ],
+    "distinctiveness_score": 10.631240844726562,
+    "spatial_top_indices": [
+      2,
+      5,
+      3
+    ],
+    "spatial_top_names": [
+      "p10_intensity",
+      "grad_mean",
+      "p50_intensity"
+    ],
+    "spatial_distinctiveness": 10.631240844726562,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.025481095537543297,
+    "lecture_comment": "Compared to the dataset average, **Plastic lid** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p10_intensity, grad_mean, p50_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 17,
+    "class_name": "Corrugated carton",
+    "most_distinct_feature_indices": [
+      55,
+      6,
+      5
+    ],
+    "most_distinct_feature_names": [
+      "h_mean",
+      "grad_std",
+      "grad_mean"
+    ],
+    "distinctiveness_score": 10.545166015625,
+    "spatial_top_indices": [
+      6,
+      5,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "grad_mean",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 9.085655212402344,
+    "frequency_top_indices": [
+      1,
+      0,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_2",
+      "fft_bin_1",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.00972175132483244,
+    "lecture_comment": "Compared to the dataset average, **Corrugated carton** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, grad_mean, p10_intensity`; strongest frequency shifts involve `fft_bin_2, fft_bin_1, high_freq_energy`."
+  },
+  {
+    "class_id": 55,
+    "class_name": "Plastic straw",
+    "most_distinct_feature_indices": [
+      5,
+      6,
+      2
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "distinctiveness_score": 9.287696838378906,
+    "spatial_top_indices": [
+      5,
+      6,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "grad_std",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 9.287696838378906,
+    "frequency_top_indices": [
+      0,
+      1,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.01509722787886858,
+    "lecture_comment": "Compared to the dataset average, **Plastic straw** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, grad_std, p10_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, high_freq_energy`."
+  },
+  {
+    "class_id": 36,
+    "class_name": "Plastic film",
+    "most_distinct_feature_indices": [
+      5,
+      55,
+      3
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "h_mean",
+      "p50_intensity"
+    ],
+    "distinctiveness_score": 9.124163627624512,
+    "spatial_top_indices": [
+      5,
+      3,
+      0
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p50_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 7.927403926849365,
+    "frequency_top_indices": [
+      0,
+      8,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.008402927778661251,
+    "lecture_comment": "Compared to the dataset average, **Plastic film** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p50_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_3`."
+  },
+  {
+    "class_id": 0,
+    "class_name": "Aluminium foil",
+    "most_distinct_feature_indices": [
+      2,
+      51,
+      6
+    ],
+    "most_distinct_feature_names": [
+      "p10_intensity",
+      "r_mean",
+      "grad_std"
+    ],
+    "distinctiveness_score": 8.9769287109375,
+    "spatial_top_indices": [
+      2,
+      6,
+      0
+    ],
+    "spatial_top_names": [
+      "p10_intensity",
+      "grad_std",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 8.02874755859375,
+    "frequency_top_indices": [
+      0,
+      2,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_3",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.004456377122551203,
+    "lecture_comment": "Compared to the dataset average, **Aluminium foil** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p10_intensity, grad_std, mean_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_3, high_freq_energy`."
+  },
+  {
+    "class_id": 40,
+    "class_name": "Single-use carrier bag",
+    "most_distinct_feature_indices": [
+      4,
+      3,
+      50
+    ],
+    "most_distinct_feature_names": [
+      "p90_intensity",
+      "p50_intensity",
+      "g_mean"
+    ],
+    "distinctiveness_score": 8.869547843933105,
+    "spatial_top_indices": [
+      4,
+      3,
+      6
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "p50_intensity",
+      "grad_std"
+    ],
+    "spatial_distinctiveness": 8.702336311340332,
+    "frequency_top_indices": [
+      0,
+      1,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.018527578562498093,
+    "lecture_comment": "Compared to the dataset average, **Single-use carrier bag** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, p50_intensity, grad_std`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_4`."
+  },
+  {
+    "class_id": 50,
+    "class_name": "Pop tab",
+    "most_distinct_feature_indices": [
+      56,
+      59,
+      2
+    ],
+    "most_distinct_feature_names": [
+      "s_mean",
+      "s_std",
+      "p10_intensity"
+    ],
+    "distinctiveness_score": 8.644559860229492,
+    "spatial_top_indices": [
+      2,
+      4,
+      6
+    ],
+    "spatial_top_names": [
+      "p10_intensity",
+      "p90_intensity",
+      "grad_std"
+    ],
+    "spatial_distinctiveness": 5.037923336029053,
+    "frequency_top_indices": [
+      1,
+      8,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_2",
+      "high_freq_energy",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.023120148107409477,
+    "lecture_comment": "Compared to the dataset average, **Pop tab** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p10_intensity, p90_intensity, grad_std`; strongest frequency shifts involve `fft_bin_2, high_freq_energy, fft_bin_4`."
+  },
+  {
+    "class_id": 31,
+    "class_name": "Tissues",
+    "most_distinct_feature_indices": [
+      3,
+      2,
+      6
+    ],
+    "most_distinct_feature_names": [
+      "p50_intensity",
+      "p10_intensity",
+      "grad_std"
+    ],
+    "distinctiveness_score": 8.305232048034668,
+    "spatial_top_indices": [
+      3,
+      2,
+      6
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "p10_intensity",
+      "grad_std"
+    ],
+    "spatial_distinctiveness": 8.305232048034668,
+    "frequency_top_indices": [
+      8,
+      0,
+      4
+    ],
+    "frequency_top_names": [
+      "high_freq_energy",
+      "fft_bin_1",
+      "fft_bin_5"
+    ],
+    "frequency_distinctiveness": 0.004726622253656387,
+    "lecture_comment": "Compared to the dataset average, **Tissues** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, p10_intensity, grad_std`; strongest frequency shifts involve `high_freq_energy, fft_bin_1, fft_bin_5`."
+  },
+  {
+    "class_id": 34,
+    "class_name": "Paper bag",
+    "most_distinct_feature_indices": [
+      56,
+      58,
+      57
+    ],
+    "most_distinct_feature_names": [
+      "s_mean",
+      "h_std",
+      "v_mean"
+    ],
+    "distinctiveness_score": 8.037748336791992,
+    "spatial_top_indices": [
+      6,
+      2,
+      1
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p10_intensity",
+      "std_intensity"
+    ],
+    "spatial_distinctiveness": 3.7746059894561768,
+    "frequency_top_indices": [
+      1,
+      0,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_2",
+      "fft_bin_1",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.006609962787479162,
+    "lecture_comment": "Compared to the dataset average, **Paper bag** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p10_intensity, std_intensity`; strongest frequency shifts involve `fft_bin_2, fft_bin_1, high_freq_energy`."
+  },
+  {
+    "class_id": 33,
+    "class_name": "Normal paper",
+    "most_distinct_feature_indices": [
+      56,
+      3,
+      59
+    ],
+    "most_distinct_feature_names": [
+      "s_mean",
+      "p50_intensity",
+      "s_std"
+    ],
+    "distinctiveness_score": 7.82485818862915,
+    "spatial_top_indices": [
+      3,
+      5,
+      2
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "grad_mean",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 6.625089168548584,
+    "frequency_top_indices": [
+      0,
+      8,
+      3
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_4"
+    ],
+    "frequency_distinctiveness": 0.005403880029916763,
+    "lecture_comment": "Compared to the dataset average, **Normal paper** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, grad_mean, p10_intensity`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_4`."
+  },
+  {
+    "class_id": 21,
+    "class_name": "Disposable plastic cup",
+    "most_distinct_feature_indices": [
+      51,
+      2,
+      57
+    ],
+    "most_distinct_feature_names": [
+      "r_mean",
+      "p10_intensity",
+      "v_mean"
+    ],
+    "distinctiveness_score": 7.605674743652344,
+    "spatial_top_indices": [
+      2,
+      3,
+      0
+    ],
+    "spatial_top_names": [
+      "p10_intensity",
+      "p50_intensity",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 5.6909613609313965,
+    "frequency_top_indices": [
+      0,
+      2,
+      8
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_3",
+      "high_freq_energy"
+    ],
+    "frequency_distinctiveness": 0.017452159896492958,
+    "lecture_comment": "Compared to the dataset average, **Disposable plastic cup** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p10_intensity, p50_intensity, mean_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_3, high_freq_energy`."
+  },
+  {
+    "class_id": 8,
+    "class_name": "Metal bottle cap",
+    "most_distinct_feature_indices": [
+      55,
+      56,
+      58
+    ],
+    "most_distinct_feature_names": [
+      "h_mean",
+      "s_mean",
+      "h_std"
+    ],
+    "distinctiveness_score": 7.280162334442139,
+    "spatial_top_indices": [
+      3,
+      0,
+      5
+    ],
+    "spatial_top_names": [
+      "p50_intensity",
+      "mean_intensity",
+      "grad_mean"
+    ],
+    "spatial_distinctiveness": 1.4502944946289062,
+    "frequency_top_indices": [
+      0,
+      8,
+      1
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "high_freq_energy",
+      "fft_bin_2"
+    ],
+    "frequency_distinctiveness": 0.017774829640984535,
+    "lecture_comment": "Compared to the dataset average, **Metal bottle cap** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p50_intensity, mean_intensity, grad_mean`; strongest frequency shifts involve `fft_bin_1, high_freq_energy, fft_bin_2`."
+  },
+  {
+    "class_id": 16,
+    "class_name": "Drink carton",
+    "most_distinct_feature_indices": [
+      55,
+      56,
+      49
+    ],
+    "most_distinct_feature_names": [
+      "h_mean",
+      "s_mean",
+      "b_mean"
+    ],
+    "distinctiveness_score": 7.111415863037109,
+    "spatial_top_indices": [
+      6,
+      3,
+      2
+    ],
+    "spatial_top_names": [
+      "grad_std",
+      "p50_intensity",
+      "p10_intensity"
+    ],
+    "spatial_distinctiveness": 2.3863117694854736,
+    "frequency_top_indices": [
+      1,
+      8,
+      0
+    ],
+    "frequency_top_names": [
+      "fft_bin_2",
+      "high_freq_energy",
+      "fft_bin_1"
+    ],
+    "frequency_distinctiveness": 0.007915693335235119,
+    "lecture_comment": "Compared to the dataset average, **Drink carton** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_std, p50_intensity, p10_intensity`; strongest frequency shifts involve `fft_bin_2, high_freq_energy, fft_bin_1`."
+  },
+  {
+    "class_id": 29,
+    "class_name": "Other plastic",
+    "most_distinct_feature_indices": [
+      4,
+      51,
+      57
+    ],
+    "most_distinct_feature_names": [
+      "p90_intensity",
+      "r_mean",
+      "v_mean"
+    ],
+    "distinctiveness_score": 6.3464508056640625,
+    "spatial_top_indices": [
+      4,
+      5,
+      0
+    ],
+    "spatial_top_names": [
+      "p90_intensity",
+      "grad_mean",
+      "mean_intensity"
+    ],
+    "spatial_distinctiveness": 5.440554141998291,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.027927340939641,
+    "lecture_comment": "Compared to the dataset average, **Other plastic** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `p90_intensity, grad_mean, mean_intensity`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  }
+]

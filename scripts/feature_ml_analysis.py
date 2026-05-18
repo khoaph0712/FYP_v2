@@ -25,6 +25,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import yaml
 from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
@@ -36,6 +37,11 @@ from sklearn.metrics import (
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVC
+
+try:
+    from xgboost import XGBClassifier
+except ImportError:  # Keep the script usable before optional dependency install.
+    XGBClassifier = None
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -109,7 +115,15 @@ def resolve_split_images(ds_root: Path, split_rel: str) -> Path:
     path = Path(split_rel)
     if path.is_absolute():
         return path
-    return ds_root / path
+    direct = ds_root / path
+    if direct.exists():
+        return direct
+    # Roboflow raw exports may use "../test/images" in a root-level data.yaml.
+    if split_rel.startswith("../"):
+        fallback = ds_root / split_rel.replace("../", "", 1)
+        if fallback.exists():
+            return fallback
+    return direct
 
 
 def image_to_label_path(image_path: Path) -> Path:
@@ -348,6 +362,54 @@ def to_matrix(samples: list[Sample]) -> tuple[np.ndarray, np.ndarray]:
     return x, y
 
 
+def compact_supported_classes(
+    x_train: np.ndarray,
+    y_train: np.ndarray,
+    x_test: np.ndarray,
+    y_test: np.ndarray,
+    class_names: list[str],
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, list[str], dict]:
+    """Keep only classes with both train and test samples, then remap to 0..K-1.
+
+    Some external datasets, especially official TACO with rare 60-class labels,
+    have classes missing from one split. XGBoost requires contiguous labels, and
+    evaluation is not meaningful for a class with no train or no test support.
+    """
+    train_counts = np.bincount(y_train, minlength=len(class_names))
+    test_counts = np.bincount(y_test, minlength=len(class_names))
+    keep_old = [
+        cid
+        for cid in range(len(class_names))
+        if int(train_counts[cid]) > 0 and int(test_counts[cid]) > 0
+    ]
+    dropped = [
+        {
+            "class_id": cid,
+            "class_name": class_names[cid],
+            "train_count": int(train_counts[cid]),
+            "test_count": int(test_counts[cid]),
+        }
+        for cid in range(len(class_names))
+        if cid not in keep_old
+    ]
+    if len(keep_old) == len(class_names):
+        return x_train, y_train, x_test, y_test, class_names, {"dropped_unsupported_classes": []}
+    if len(keep_old) < 2:
+        raise SystemExit("Fewer than two classes have both train and test support; ML comparison is not meaningful.")
+
+    old_to_new = {old: new for new, old in enumerate(keep_old)}
+    train_mask = np.isin(y_train, keep_old)
+    test_mask = np.isin(y_test, keep_old)
+    y_train_new = np.array([old_to_new[int(v)] for v in y_train[train_mask]], dtype=np.int64)
+    y_test_new = np.array([old_to_new[int(v)] for v in y_test[test_mask]], dtype=np.int64)
+    kept_names = [class_names[old] for old in keep_old]
+    meta = {
+        "dropped_unsupported_classes": dropped,
+        "note": "Classes without both train and test support were removed for this ML run and remaining labels were remapped to 0..K-1.",
+    }
+    return x_train[train_mask], y_train_new, x_test[test_mask], y_test_new, kept_names, meta
+
+
 def object_difference_report(x_train: np.ndarray, y_train: np.ndarray, class_names: list[str]) -> list[dict]:
     """Per-class deviation from global mean, with named spatial/frequency commentary."""
     assert x_train.shape[1] == len(ALL_FEATURE_NAMES)
@@ -404,8 +466,15 @@ def object_difference_report(x_train: np.ndarray, y_train: np.ndarray, class_nam
     return report
 
 
-def build_models() -> dict[str, Pipeline | RandomForestClassifier]:
-    return {
+def build_models(n_classes: int) -> dict[str, object]:
+    models: dict[str, object] = {
+        # Why: simple, readable tree baseline requested by lecturer.
+        "decision_tree": DecisionTreeClassifier(
+            criterion="gini",
+            max_depth=24,
+            min_samples_leaf=3,
+            random_state=42,
+        ),
         # Why: strong linear baseline on scaled feature vectors.
         "logreg": Pipeline(
             [("scaler", StandardScaler()), ("clf", LogisticRegression(max_iter=1000, n_jobs=None))]
@@ -417,6 +486,32 @@ def build_models() -> dict[str, Pipeline | RandomForestClassifier]:
         # Why: often stronger than RF on high-dimensional handcrafted descriptors.
         "extra_trees": ExtraTreesClassifier(n_estimators=350, random_state=42, n_jobs=-1),
     }
+    if XGBClassifier is not None:
+        xgb_common = {
+            "n_estimators": 300,
+            "max_depth": 5,
+            "learning_rate": 0.08,
+            "subsample": 0.9,
+            "colsample_bytree": 0.85,
+            "tree_method": "hist",
+            "random_state": 42,
+            "n_jobs": -1,
+        }
+        if n_classes == 2:
+            models["xgboost"] = XGBClassifier(
+                **xgb_common,
+                objective="binary:logistic",
+                eval_metric="logloss",
+            )
+        else:
+            models["xgboost"] = XGBClassifier(
+                **xgb_common,
+                objective="multi:softprob",
+                eval_metric="mlogloss",
+            )
+    else:
+        print("[WARN] xgboost is not installed; skipping XGBoost. Run: pip install xgboost")
+    return models
 
 
 def save_confusion(y_true: np.ndarray, y_pred: np.ndarray, class_names: list[str], out_path: Path, title: str) -> None:
@@ -605,6 +700,12 @@ def write_report(
     lines.append(
         f"Each object crop is resized to 64x64 internally, then summarized into **{len(ALL_FEATURE_NAMES)}** floats."
     )
+    lines.append(
+        f"- **Why {len(ALL_FEATURE_NAMES)} features?** The vector is the fixed concatenation of "
+        f"`{N_SPATIAL}` spatial + `{N_FREQ}` frequency/FFT + `{N_COLOR}` color + `{N_HOG}` HOG features. "
+        "This gives a lecturer-explainable representation of brightness/edges, texture frequencies, color distribution, "
+        "and local shape/orientation instead of giving raw pixels directly to classical ML."
+    )
     lines.append("### Spatial domain (8 features)")
     for i, name in enumerate(FEATURE_SPATIAL_NAMES):
         lines.append(f"{i + 1}. `{name}`")
@@ -620,16 +721,20 @@ def write_report(
     lines.append("## Models trained on extracted features")
     lines.append("| Model | Role |")
     lines.append("|---|---|")
+    lines.append("| `decision_tree` | **DecisionTreeClassifier** baseline; easiest tree model to explain. |")
     lines.append("| `logreg` | Logistic Regression on **StandardScaler**-normalized features (linear baseline). |")
     lines.append("| `linear_svm` | **Linear SVM** on scaled features, suitable for the larger color+HOG vector. |")
     lines.append("| `extra_trees` | **ExtraTreesClassifier** (350 trees) - stronger high-dimensional classical baseline. |")
     lines.append("| `rf` | **RandomForestClassifier** (250 trees) - tree baseline + feature importance for charts. |")
+    if any(r["model"] == "xgboost" for r in results):
+        lines.append("| `xgboost` | **XGBoost** gradient-boosted tree baseline requested in lecturer notes. |")
     lines.append("")
 
     lines.append("## Figures to include in the thesis / lecturer report")
     lines.append("**Classical ML (this folder)**")
     lines.append("- `chart_model_comparison.png` — Accuracy & F1-macro across ML models (no epoch-wise loss; ML is not trained by gradient descent here).")
-    lines.append("- `confusion_logreg.png`, `confusion_linear_svm.png`, `confusion_rf.png`, `confusion_extra_trees.png` - confusion matrices.")
+    lines.append("- `confusion_decision_tree.png`, `confusion_linear_svm.png`, `confusion_rf.png`, `confusion_xgboost.png` - requested ML confusion matrices where available.")
+    lines.append("- `classification_reports.json` - precision, recall, F1-score, and support for every class/model.")
     lines.append("- `chart_domain_importance.png` — spatial/frequency/color/HOG contribution (RF feature importance).")
     lines.append("- `ml/frequency_analysis/` — spatial/frequency summary CSVs + optional spectrum plots.")
     lines.append("**Deep learning (separate runs; loss / training curves)**")
@@ -654,7 +759,7 @@ def write_report(
         "`ml/frequency_analysis/spatial_summary.csv` + `frequency_summary.csv` (class-wise means)."
     )
     lines.append(
-        "3. **Extract features, then ML** — LogReg / Linear SVM / RandomForest / ExtraTrees are trained **only** on the stacked "
+        "3. **Extract features, then ML** — Decision Tree / SVM / RandomForest / XGBoost are trained **only** on the stacked "
         f"{len(ALL_FEATURE_NAMES)}-D feature vectors from step 1 (not raw pixels inside this script).\n"
     )
 
@@ -693,10 +798,13 @@ def write_report(
     lines.append("")
 
     lines.append("## Model choice rationale")
+    lines.append("- **Decision Tree:** easiest baseline to explain; shows whether simple feature thresholds can separate classes.")
     lines.append("- **Logistic Regression:** simple linear baseline on standardized feature vectors.")
     lines.append("- **Linear SVM:** scalable margin-based baseline for high-dimensional handcrafted descriptors.")
     lines.append("- **Random Forest:** robust tree-based baseline and interpretable feature importance.")
     lines.append("- **ExtraTrees:** tree ensemble baseline that often improves over RF on noisy, high-dimensional features.\n")
+    if any(r["model"] == "xgboost" for r in results):
+        lines.append("- **XGBoost:** boosted tree ensemble that tests whether sequential error correction improves the handcrafted-feature baseline.\n")
 
     lines.append("## Chart comments")
     lines.append(
@@ -742,7 +850,7 @@ def main() -> None:
     cfg = yaml.safe_load(args.data.read_text(encoding="utf-8"))
     class_names = list(cfg["names"])
     full_nc = len(class_names)
-    ds_root = Path(cfg["path"])
+    ds_root = Path(cfg.get("path", args.data.parent))
 
     exclude_list = [s.strip() for s in args.exclude_classes.split(",") if s.strip()]
     kept_names, old_to_new = filter_class_schedule(class_names, exclude_list)
@@ -799,14 +907,19 @@ def main() -> None:
         raise SystemExit(f"No test samples loaded from {test_img_dir}")
     x_test, y_test = to_matrix(test_samples)
 
+    x_train, y_train, x_test, y_test, kept_names, support_meta = compact_supported_classes(
+        x_train, y_train, x_test, y_test, kept_names
+    )
+
     k = len(kept_names)
     class_support = {
         "train": {kept_names[i]: int(v) for i, v in enumerate(np.bincount(y_train, minlength=k))},
         "test": {kept_names[i]: int(v) for i, v in enumerate(np.bincount(y_test, minlength=k))},
     }
+    class_support.update(support_meta)
     (args.out / "class_support.json").write_text(json.dumps(class_support, indent=2), encoding="utf-8")
 
-    models = build_models()
+    models = build_models(k)
     results: list[dict] = []
     detailed: dict[str, dict] = {}
     trained_models: dict[str, object] = {}

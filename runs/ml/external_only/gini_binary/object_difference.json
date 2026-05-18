@@ -1,0 +1,78 @@
+[
+  {
+    "class_id": 1,
+    "class_name": "garbage",
+    "most_distinct_feature_indices": [
+      5,
+      56,
+      57
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "s_mean",
+      "v_mean"
+    ],
+    "distinctiveness_score": 16.600744247436523,
+    "spatial_top_indices": [
+      5,
+      2,
+      6
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p10_intensity",
+      "grad_std"
+    ],
+    "spatial_distinctiveness": 11.715286254882812,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.028903841972351074,
+    "lecture_comment": "Compared to the dataset average, **garbage** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p10_intensity, grad_std`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  },
+  {
+    "class_id": 0,
+    "class_name": "background",
+    "most_distinct_feature_indices": [
+      5,
+      56,
+      57
+    ],
+    "most_distinct_feature_names": [
+      "grad_mean",
+      "s_mean",
+      "v_mean"
+    ],
+    "distinctiveness_score": 10.998021125793457,
+    "spatial_top_indices": [
+      5,
+      2,
+      6
+    ],
+    "spatial_top_names": [
+      "grad_mean",
+      "p10_intensity",
+      "grad_std"
+    ],
+    "spatial_distinctiveness": 7.761297702789307,
+    "frequency_top_indices": [
+      0,
+      1,
+      2
+    ],
+    "frequency_top_names": [
+      "fft_bin_1",
+      "fft_bin_2",
+      "fft_bin_3"
+    ],
+    "frequency_distinctiveness": 0.019148850813508034,
+    "lecture_comment": "Compared to the dataset average, **background** differs more in the **spatial** domain than in frequency: strongest spatial shifts involve `grad_mean, p10_intensity, grad_std`; strongest frequency shifts involve `fft_bin_1, fft_bin_2, fft_bin_3`."
+  }
+]
